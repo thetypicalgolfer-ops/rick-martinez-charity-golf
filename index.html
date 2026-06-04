@@ -239,6 +239,9 @@
   @media(max-width:860px){.dgrid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:440px){.dgrid{grid-template-columns:1fr}}
   .dcard{background:#fff;border-radius:16px;padding:28px 18px;text-align:center;box-shadow:0 14px 34px rgba(10,28,61,.08);border-bottom:4px solid var(--red)}
+  .dcard.cal-card{display:block;cursor:pointer;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s}
+  .dcard.cal-card:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(10,28,61,.18)}
+  .dcard.cal-card small{color:var(--red);font-weight:700}
   .dcard:nth-child(2){border-color:var(--gold)}
   .dcard:nth-child(3){border-color:var(--sky)}
   .dcard:nth-child(4){border-color:var(--navy)}
@@ -534,7 +537,7 @@
       <h2>Event Details</h2>
     </div>
     <div class="dgrid">
-      <div class="dcard reveal"><div class="ic">📅</div><div class="k bebas">Date</div><div class="v display">Fri, July 10</div><small>2026</small></div>
+      <a class="dcard cal-card reveal" href="event.ics"><div class="ic">📅</div><div class="k bebas">Date</div><div class="v display">Fri, July 10</div><small>2026 · 📲 Tap to add to calendar</small></a>
       <div class="dcard reveal" data-d="1"><div class="ic">⏰</div><div class="k bebas">Schedule</div><div class="v display">7AM · 8AM</div><small>Registration · Shotgun start</small></div>
       <div class="dcard reveal" data-d="2"><div class="ic">📍</div><div class="k bebas">Location</div><div class="v display">Golf Club of Texas</div><small>13600 Briggs Ranch Rd, San Antonio, TX 78245</small></div>
       <div class="dcard reveal" data-d="3"><div class="ic">⛳</div><div class="k bebas">Format</div><div class="v display">4-Person Scramble</div><small>18 holes · contests &amp; prizes</small></div>

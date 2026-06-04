@@ -1,0 +1,11 @@
+{
+  "headers": [
+    {
+      "source": "/event.ics",
+      "headers": [
+        { "key": "Content-Type", "value": "text/calendar; charset=utf-8" },
+        { "key": "Content-Disposition", "value": "inline; filename=\"rick-martinez-charity-golf.ics\"" }
+      ]
+    }
+  ]
+}

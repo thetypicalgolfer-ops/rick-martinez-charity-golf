@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Rick Martinez Charity Golf//Tournament//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:rick-martinez-charity-golf-2026@charitygolffsa.org
+DTSTAMP:20260604T000000Z
+DTSTART:20260710T070000
+DTEND:20260710T140000
+SUMMARY:2nd Annual Rick Martinez Charity Golf Tournament
+LOCATION:Golf Club of Texas\, 13600 Briggs Ranch Rd\, San Antonio\, TX 78245
+DESCRIPTION:Registration opens 7:00 AM\, 8:00 AM shotgun start. 4-person scramble benefiting the Learn for Life Center of San Antonio & Loving Heart Foundation. $160 per player / $550 per team. Info: 210-347-9308 or www.charitygolffsa.org
+URL:https://www.charitygolffsa.org
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Rick Martinez Charity Golf Tournament is tomorrow!
+END:VALARM
+END:VEVENT
+END:VCALENDAR
