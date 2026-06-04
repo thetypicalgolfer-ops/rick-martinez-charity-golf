@@ -214,7 +214,8 @@
   .scard .pick{margin:14px 22px 22px;text-align:center;background:var(--navy);color:#fff;font-family:var(--head);font-weight:600;letter-spacing:.08em;font-size:1.1rem;padding:12px;border-radius:50px;cursor:pointer;transition:background .25s,transform .25s}
   .scard .pick:hover{background:var(--red);transform:scale(1.04)}
 
-  .threehole{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(100deg,var(--red),var(--red-deep));border-radius:16px;padding:28px clamp(24px,4vw,44px);position:relative;overflow:hidden}
+  .threehole{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(100deg,var(--red),var(--red-deep));border-radius:16px;padding:28px clamp(24px,4vw,44px);position:relative;overflow:hidden;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s}
+  .threehole:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(224,25,51,.4)}
   .threehole::after{content:"⛳";position:absolute;right:24px;bottom:-26px;font-size:8rem;opacity:.12}
   .threehole b{font-family:var(--head);font-weight:700;font-size:1.9rem;color:#fff;display:block;text-transform:uppercase}
   .threehole span{color:#ffe1e6}
@@ -277,9 +278,9 @@
   .modal h3{font-family:var(--head);font-weight:700;font-size:2rem;color:var(--navy);text-transform:uppercase;line-height:1;margin-bottom:6px}
   .modal .mtag{font-family:var(--script);font-weight:700;color:var(--red);margin-bottom:16px}
   .modal .mintro{color:#41506a;font-size:.95rem;margin-bottom:16px}
-  .modal .pillrow{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-  .modal .pill{background:var(--navy);color:var(--cream);padding:9px 16px;border-radius:30px;font-family:var(--head);font-weight:600;letter-spacing:.05em;font-size:1.05rem}
-  .modal .pill span{color:var(--gold)}
+  .modal .msel{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;border-radius:14px;padding:14px 20px;margin-bottom:16px;border:1px solid rgba(242,183,5,.4)}
+  .modal .msel span{font-family:var(--head);font-weight:700;font-size:1.02rem;line-height:1.15}
+  .modal .msel b{font-family:var(--head);font-weight:800;font-size:1.9rem;color:var(--gold);white-space:nowrap}
   .modal .mrow{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px;font-size:.94rem}
   .modal .mrow .ic{font-size:1.3rem;width:26px;text-align:center;flex-shrink:0}
   .modal .mrow b{color:var(--navy)}
@@ -315,7 +316,8 @@
     .modal h3{font-size:1.55rem}
     .modal .mtag{font-size:1.3rem;margin-bottom:12px}
     .modal .mintro{font-size:.9rem;margin-bottom:12px}
-    .modal .pillrow{margin-bottom:14px}
+    .modal .msel{margin-bottom:14px;padding:12px 16px}
+    .modal .msel b{font-size:1.7rem}
     .modal .mrow{margin-bottom:11px;font-size:.9rem}
     .modal .mbtn{font-size:1.2rem;padding:13px}
     .modal .x{top:10px;right:12px}
@@ -471,29 +473,29 @@
         <div class="top"><div class="ti">💎</div><div class="tier">Platinum</div><div class="stars">★★★★★</div></div>
         <div class="amt">$5,000</div>
         <ul><li>Eight player entries</li><li>Recognition in tournament publicity</li><li>Premium clubhouse banner</li><li>Signage at eight golf holes</li></ul>
-        <button class="pick" onclick="openModal('Platinum Sponsor — $5,000')">Choose Platinum</button>
+        <button class="pick" onclick="openModal('platinum')">Choose Platinum</button>
       </div>
       <div class="scard gold reveal" data-d="1">
         <div class="top"><div class="ti">🏆</div><div class="tier">Gold</div><div class="stars">★★★★</div></div>
         <div class="amt">$3,000</div>
         <ul><li>Four player entries</li><li>Recognition in tournament publicity</li><li>Clubhouse banner recognition</li><li>Signage at four golf holes</li></ul>
-        <button class="pick" onclick="openModal('Gold Sponsor — $3,000')">Choose Gold</button>
+        <button class="pick" onclick="openModal('gold')">Choose Gold</button>
       </div>
       <div class="scard silver reveal" data-d="2">
         <div class="top"><div class="ti">⭐</div><div class="tier">Silver</div><div class="stars">★★★</div></div>
         <div class="amt">$2,000</div>
         <ul><li>Two player entries</li><li>Recognition in tournament publicity</li><li>Clubhouse banner recognition</li><li>Signage at three golf holes</li></ul>
-        <button class="pick" onclick="openModal('Silver Sponsor — $2,000')">Choose Silver</button>
+        <button class="pick" onclick="openModal('silver')">Choose Silver</button>
       </div>
       <div class="scard bronze reveal" data-d="3">
         <div class="top"><div class="ti">🎖️</div><div class="tier">Bronze</div><div class="stars">★★</div></div>
         <div class="amt">$1,000</div>
         <ul><li>One player entry</li><li>Recognition in tournament publicity</li><li>Company name &amp; logo on signage</li></ul>
-        <button class="pick" onclick="openModal('Bronze Sponsor — $1,000')">Choose Bronze</button>
+        <button class="pick" onclick="openModal('bronze')">Choose Bronze</button>
       </div>
     </div>
 
-    <div class="threehole reveal">
+    <div class="threehole reveal" onclick="openModal('threehole')" role="button" tabindex="0">
       <div><b>⛳ Three Hole Sponsor</b><span>Your business recognized with signage at THREE golf holes!</span></div>
       <div class="pr display">$250</div>
     </div>
@@ -578,15 +580,11 @@
     <h3 id="mTitle">Register Now!</h3>
     <div class="mtag">Let's tee up for tomorrow 🇺🇸</div>
     <p class="mintro" id="mIntro"></p>
-    <div class="pillrow">
-      <div class="pill">Player <span>$160</span></div>
-      <div class="pill">Team of 4 <span>$550</span></div>
-    </div>
-    <div class="mrow"><span class="ic">📞</span><div>Call to register<br><b>210-347-9308</b></div></div>
-    <div class="mrow"><span class="ic">✉️</span><div>Email us<br><a href="mailto:charitygolffsa@gmail.com?subject=Golf%20Tournament%20Registration">charitygolffsa@gmail.com</a></div></div>
+    <div class="msel"><span id="mSelKind">Solo Player Entry</span><b id="mSelAmt">$160</b></div>
+    <a class="mbtn" id="mCash" href="https://cash.app/$LovingHeartSA/160" target="_blank" rel="noopener">📱 Pay <span id="mCashAmt">$160</span> with Cash App</a>
+    <div class="mrow"><span class="ic">📞</span><div>Call to register<br><a href="tel:2103479308"><b>210-347-9308</b></a></div></div>
+    <div class="mrow"><span class="ic">✉️</span><div>Email your registration (pre-filled)<br><a id="mEmail" href="mailto:charitygolffsa@gmail.com">charitygolffsa@gmail.com</a></div></div>
     <div class="mrow"><span class="ic">🌐</span><div>Register online<br><a href="https://www.charitygolffsa.org" target="_blank" rel="noopener">www.charitygolffsa.org</a></div></div>
-    <div class="mrow"><span class="ic">📱</span><div>Pay fast with Cash App<br><b>$LovingHeartSA</b></div></div>
-    <a class="mbtn" href="tel:2103479308">📞 Call to Lock In My Spot</a>
     <div class="note">Checks payable to: The Learn for Life Center of San Antonio. Friday, July 10, 2026 · Golf Club of Texas, San Antonio · Registration 7:00 AM, shotgun start 8:00 AM.</div>
   </div>
 </div>
@@ -619,14 +617,38 @@
 
   /* ===== Modal ===== */
   const modal=document.getElementById('modal');
-  const info={
-    player:{t:'Register as a Player',i:"Join us as a solo golfer — we'll pair you with a great group for the day. 18 holes, breakfast & lunch, a player gift, and entry to every contest."},
-    team:{t:'Register Your Team of 4',i:"Bring your foursome for the best value! Four full entries with everything included — the fastest way to lock in your crew."}
+  const OPTIONS={
+    player:{title:'Register as a Player',kind:'Solo Player Entry',amount:160,
+      intro:"Join us as a solo golfer — we'll pair you with a great group for the day. 18 holes, breakfast & lunch, a player gift, and entry to every contest."},
+    team:{title:'Register Your Team of 4',kind:'Team of 4 (4 Players)',amount:550,
+      intro:"Bring your foursome for the best value! Four full entries with everything included — the fastest way to lock in your crew."},
+    platinum:{title:'Platinum Sponsorship',kind:'Platinum Sponsor',amount:5000,
+      intro:"Top-tier visibility: eight player entries, premium clubhouse banner recognition, signage at eight golf holes, and recognition in all tournament publicity."},
+    gold:{title:'Gold Sponsorship',kind:'Gold Sponsor',amount:3000,
+      intro:"Four player entries, clubhouse banner recognition, signage at four golf holes, and recognition in tournament publicity."},
+    silver:{title:'Silver Sponsorship',kind:'Silver Sponsor',amount:2000,
+      intro:"Two player entries, clubhouse banner recognition, signage at three golf holes, and recognition in tournament publicity."},
+    bronze:{title:'Bronze Sponsorship',kind:'Bronze Sponsor',amount:1000,
+      intro:"One player entry, your company name & logo on tournament signage, and recognition in tournament publicity."},
+    threehole:{title:'Three Hole Sponsor',kind:'Three Hole Sponsor',amount:250,
+      intro:"Get your business recognized with signage at THREE golf holes — a simple, high-impact way to support the cause."}
   };
   function openModal(key){
-    const d=info[key];
-    document.getElementById('mTitle').textContent=d?d.t:key;
-    document.getElementById('mIntro').textContent=d?d.i:'Lock in this sponsorship and put your business front and center while fueling our mission. Reach out below to confirm your spot!';
+    const o=OPTIONS[key]||OPTIONS.player;
+    const amtStr='$'+o.amount.toLocaleString();
+    document.getElementById('mTitle').textContent=o.title;
+    document.getElementById('mIntro').textContent=o.intro;
+    document.getElementById('mSelKind').textContent=o.kind;
+    document.getElementById('mSelAmt').textContent=amtStr;
+    document.getElementById('mCashAmt').textContent=amtStr;
+    document.getElementById('mCash').href='https://cash.app/$LovingHeartSA/'+o.amount;
+    const subject='Registration — '+o.kind+' ('+amtStr+')';
+    const body="Hi! I'd like to register for the 2nd Annual Rick Martinez Charity Golf Tournament.\n\n"
+      +"Selection: "+o.kind+" ("+amtStr+")\nName:\nPhone:\nEmail:\n"
+      +(key==='team'?"\nTeam name:\nPlayer 1:\nPlayer 2:\nPlayer 3:\nPlayer 4:\n":"")
+      +(/sponsor|hole/i.test(o.kind)?"\nCompany / business name:\n":"")
+      +"\nThank you!";
+    document.getElementById('mEmail').href='mailto:charitygolffsa@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     modal.classList.add('show');document.body.style.overflow='hidden';
     burst();
   }
