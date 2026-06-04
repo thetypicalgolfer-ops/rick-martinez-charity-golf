@@ -289,13 +289,15 @@
   .modal .note{font-size:.8rem;color:var(--muted);margin-top:14px;border-top:1px solid rgba(10,28,61,.12);padding-top:12px}
 
   @media(max-width:600px){
-    /* sticky top bar: smaller button, no overlap */
-    .topbar{padding:8px 12px;gap:8px}
-    .topbar .tb-left{flex:1;min-width:0;gap:9px}
-    .topbar .tb-left .flag{font-size:1.1rem}
-    .topbar .tb-left b{font-size:.92rem}
+    /* sticky top bar: truncate brand text so the button never overlaps */
+    .topbar{padding:8px 12px;gap:10px}
+    .topbar .tb-left{flex:1 1 auto;min-width:0;gap:9px}
+    .topbar .tb-left .flag{font-size:1.1rem;flex-shrink:0}
+    .topbar .tb-left>span:not(.flag){min-width:0;flex:1;overflow:hidden}
+    .topbar .tb-left b{display:block;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .topbar .tb-left small{font-size:.6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
-    .reg-btn{font-size:.82rem;padding:8px 14px;letter-spacing:.03em}
+    .topbar .tb-right{flex-shrink:0}
+    .reg-btn{font-size:.82rem;padding:8px 14px;letter-spacing:.03em;flex-shrink:0}
     /* hero: zoom in a touch so the banner text reads bigger */
     .hero{overflow:hidden}
     .hero-img{width:116%;max-width:none;margin-left:-8%}
