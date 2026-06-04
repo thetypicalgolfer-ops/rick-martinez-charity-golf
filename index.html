@@ -308,6 +308,9 @@
     .countdown .cd{min-width:0;flex:1 1 0;padding:16px 4px;border-radius:12px;border-width:1px}
     .countdown .cd b{font-size:clamp(1.9rem,9vw,2.8rem);line-height:1}
     .countdown .cd span{font-size:.58rem;letter-spacing:.04em;margin-top:6px}
+    /* photo backgrounds: show the whole scene (full width) instead of a zoomed crop */
+    .patriot::after,.mission::after,.register::after,.sponsors::after{
+      background-size:100% auto;background-position:center;background-attachment:scroll;background-color:var(--navy-deep)}
   }
   @media(max-width:520px){
     .ov{padding:10px}
