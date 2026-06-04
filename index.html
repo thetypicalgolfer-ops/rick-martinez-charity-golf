@@ -299,13 +299,13 @@
     /* hero: zoom in a touch so the banner text reads bigger */
     .hero{overflow:hidden}
     .hero-img{width:116%;max-width:none;margin-left:-8%}
-    /* countdown: one straight row across */
+    /* countdown: label on its own line, four boxes straight across below */
     .cta-band{padding:30px 12px}
-    .countdown{flex-wrap:nowrap;gap:6px}
-    .cd-label{font-size:1rem;letter-spacing:.1em;margin-bottom:10px}
-    .countdown .cd{min-width:0;flex:1 1 0;padding:16px 2px;border-radius:12px;border-width:1px}
-    .countdown .cd b{font-size:clamp(1.7rem,9.5vw,2.7rem);line-height:1}
-    .countdown .cd span{font-size:.56rem;letter-spacing:.05em;margin-top:6px}
+    .countdown{flex-wrap:wrap;gap:7px}
+    .cd-label{flex:0 0 100%;width:100%;font-size:1rem;letter-spacing:.08em;margin-bottom:12px;line-height:1.3}
+    .countdown .cd{min-width:0;flex:1 1 0;padding:16px 4px;border-radius:12px;border-width:1px}
+    .countdown .cd b{font-size:clamp(1.9rem,9vw,2.8rem);line-height:1}
+    .countdown .cd span{font-size:.58rem;letter-spacing:.04em;margin-top:6px}
   }
   @media(max-width:520px){
     .ov{padding:10px}
