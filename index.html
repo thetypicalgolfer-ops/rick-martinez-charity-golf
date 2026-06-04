@@ -143,6 +143,18 @@
   .org h3{font-family:var(--head);font-weight:600;letter-spacing:.04em;font-size:1.35rem;color:var(--navy);margin-bottom:8px}
   .org p{color:var(--muted);font-size:.92rem}
 
+  /* founder quote — cinematic */
+  .quote{position:relative;overflow:hidden;background:radial-gradient(120% 120% at 50% 0%,#15305c 0%,#0a1c3d 50%,#050f24 100%);color:var(--cream);text-align:center}
+  .quote-glow{position:absolute;left:50%;top:-30%;width:90vw;max-width:900px;aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(circle,rgba(242,183,5,.16),transparent 62%);pointer-events:none}
+  .quote-wrap{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:clamp(70px,10vw,130px) clamp(24px,6vw,60px)}
+  .quote-mark{display:block;font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(6rem,16vw,11rem);line-height:.4;color:var(--gold);opacity:.85;margin-bottom:18px;height:.5em}
+  .quote blockquote{font-family:var(--head);font-weight:500;font-size:clamp(1.5rem,3.6vw,2.7rem);line-height:1.4;letter-spacing:-.01em;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.4)}
+  .quote blockquote em{font-family:'Dancing Script',cursive;font-weight:700;font-style:normal;color:var(--gold);font-size:1.18em;line-height:1}
+  .quote-by{margin-top:38px;display:flex;flex-direction:column;align-items:center;gap:4px}
+  .quote-by .sig{font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(2.2rem,5vw,3.2rem);color:var(--gold);line-height:1}
+  .quote-by .role{font-family:var(--head);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;color:#aeb7cc}
+  .quote-by::before{content:"";display:block;width:60px;height:3px;background:var(--red);border-radius:3px;margin-bottom:14px}
+
   /* what to expect — fun playful */
   .expect{background:linear-gradient(160deg,var(--navy),var(--navy-mid));color:var(--cream);position:relative;overflow:hidden}
   .expect::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.4px 1.4px at 15% 25%,rgba(255,255,255,.4),transparent),radial-gradient(1.3px 1.3px at 70% 18%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 55%,rgba(255,255,255,.25),transparent),radial-gradient(1.2px 1.2px at 35% 70%,rgba(255,255,255,.3),transparent)}
@@ -420,6 +432,26 @@
       <div class="org reveal"><div class="ic">🎓</div><h3>Learn for Life Center</h3><p>Providing education, mentorship and opportunities for a brighter future across San Antonio.</p></div>
       <div class="org reveal" data-d="1"><div class="ic">❤️</div><h3>Loving Heart Foundation</h3><p>Investing in community outreach that creates real opportunities to change lives.</p></div>
       <div class="org reveal" data-d="2"><div class="ic">🇺🇸</div><h3>America 250</h3><p>Celebrate 250 years of freedom &amp; community — wear your best American attire and bring your flags!</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER QUOTE -->
+<section class="quote" id="founder">
+  <div class="quote-glow"></div>
+  <div class="quote-wrap">
+    <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+    <blockquote class="reveal">
+      I started this tournament because I believe a single round of golf can do
+      more than crown a winner &mdash; it can change a child&rsquo;s entire future.
+      Every swing out here is a promise to a kid who&rsquo;s counting on us. When
+      we tee it up together, we&rsquo;re telling them: <em>you matter, you are
+      loved, and you are not alone.</em> That&rsquo;s the real trophy &mdash; and
+      it&rsquo;s one we get to win together.
+    </blockquote>
+    <div class="quote-by reveal" data-d="1">
+      <span class="sig">Rick Martinez</span>
+      <span class="role">Founder &middot; Rick Martinez Charity Golf Tournament</span>
     </div>
   </div>
 </section>
