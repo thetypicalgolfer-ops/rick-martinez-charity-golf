@@ -89,37 +89,45 @@
 
   /* countdown — huge, near-full-width */
   .countdown{width:100%;display:flex;gap:clamp(10px,1.8vw,26px);justify-content:center;flex-wrap:wrap}
-  .countdown .cd{flex:1 1 0;min-width:140px;background:rgba(255,255,255,.06);border:2px solid rgba(242,183,5,.45);border-radius:18px;padding:clamp(26px,5vw,56px) 10px;backdrop-filter:blur(4px);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  .countdown .cd{flex:1 1 0;min-width:0;background:none;border:none;border-radius:0;padding:clamp(14px,3vw,30px) 8px;box-shadow:none}
   .countdown .cd b{font-family:var(--head);font-weight:700;font-size:clamp(3.4rem,11vw,8rem);color:var(--gold);display:block;line-height:1}
   .countdown .cd span{font-family:var(--head);font-weight:600;letter-spacing:.2em;font-size:clamp(.85rem,2vw,1.25rem);text-transform:uppercase;color:#c3cadb;display:block;margin-top:10px}
   .cd-label{width:100%;text-align:center;color:var(--cream);font-family:var(--head);font-weight:600;letter-spacing:.2em;font-size:clamp(1.1rem,3vw,1.7rem);margin-bottom:14px;opacity:.92}
 
-  /* ===== Split-flap (mechanical flip-clock) digits ===== */
-  .flip-group{display:flex;width:100%;gap:clamp(3px,.6vw,7px);justify-content:center}
+  /* ===== Split-flap (mechanical flip-clock) tiles ===== */
+  .flip-group{display:flex;width:100%;justify-content:center}
   .flip-unit{
     --h:clamp(3.4rem,11vw,8rem);
-    position:relative;width:.74em;height:1em;
+    position:relative;width:1.5em;max-width:100%;height:1.06em;
     font-size:var(--h);font-family:var(--head);font-weight:700;line-height:1;
-    perspective:420px;border-radius:.1em;
+    perspective:520px;border-radius:.12em;
+    box-shadow:0 .04em .02em rgba(0,0,0,.18),0 .1em .22em rgba(0,0,0,.32);
   }
   .countdown .cd .flip-unit b{
     position:absolute;left:0;width:100%;height:50%;overflow:hidden;margin:0;
     display:flex;justify-content:center;
-    font-size:1em;line-height:1em;color:var(--gold);
-    background:linear-gradient(180deg,#16223f,#0d1830);
+    font-size:1em;line-height:1em;color:#15171a;
     backface-visibility:hidden;will-change:transform;
   }
-  .countdown .cd .flip-unit b>i{font-style:normal;height:1em;line-height:1em;display:block}
+  .countdown .cd .flip-unit b>i{font-style:normal;height:1.06em;line-height:1.06em;display:block}
   .flip-unit .static-top,.flip-unit .fold-top{
-    top:0;align-items:flex-start;border-radius:.1em .1em 0 0;
-    border-bottom:1px solid rgba(0,0,0,.5);
+    top:0;align-items:flex-start;border-radius:.12em .12em 0 0;
+    border-bottom:1px solid rgba(0,0,0,.14);
+    background:linear-gradient(180deg,#ffffff,#f5f5f5);
   }
   .flip-unit .static-bottom,.flip-unit .fold-bottom{
-    bottom:0;align-items:flex-end;border-radius:0 0 .1em .1em;
-    background:linear-gradient(180deg,#101c36,#0a1326);
+    bottom:0;align-items:flex-end;border-radius:0 0 .12em .12em;
+    background:linear-gradient(180deg,#eaeaea,#dedede);
   }
-  .flip-unit .fold-top{z-index:3;transform-origin:bottom;transform:rotateX(-90deg)}
-  .flip-unit .fold-bottom{z-index:3;transform-origin:top;transform:rotateX(90deg)}
+  /* metal hinge bar with pin ends across the middle */
+  .flip-unit::before{
+    content:"";position:absolute;z-index:6;left:-.07em;right:-.07em;top:50%;height:.05em;
+    transform:translateY(-50%);border-radius:.04em;
+    background:linear-gradient(180deg,#c4c8ce 0%,#8d939a 48%,#62686e 100%);
+    box-shadow:0 .012em .02em rgba(0,0,0,.4);
+  }
+  .flip-unit .fold-top{z-index:4;transform-origin:bottom;transform:rotateX(-90deg)}
+  .flip-unit .fold-bottom{z-index:4;transform-origin:top;transform:rotateX(90deg)}
   .flip-unit.flipping .fold-top{animation:foldTop .92s ease-in forwards}
   .flip-unit.flipping .fold-bottom{animation:foldBottom .92s ease-out forwards}
   /* smooth two-phase flip: top leaf eases down, bottom leaf eases in with a gentle bounce */
@@ -708,9 +716,9 @@
     u._t=setTimeout(()=>{i('static-bottom').textContent=val;u.classList.remove('flipping');},940);
   }
   function setGroup(el,str){
-    while(el.children.length<str.length)el.appendChild(buildUnit());
-    while(el.children.length>str.length)el.removeChild(el.lastChild);
-    for(let n=0;n<str.length;n++)setDigit(el.children[n],str[n]);
+    let u=el.firstElementChild;
+    if(!u){u=buildUnit();el.appendChild(u);}
+    setDigit(u,str);
   }
   const C={d:document.getElementById('c-d'),h:document.getElementById('c-h'),
            m:document.getElementById('c-m'),s:document.getElementById('c-s')};
