@@ -95,38 +95,78 @@
   .cd-label{width:100%;text-align:center;color:var(--cream);font-family:var(--head);font-weight:600;letter-spacing:.2em;font-size:clamp(1.1rem,3vw,1.7rem);margin-bottom:14px;opacity:.92}
 
   /* ===== Split-flap (mechanical flip-clock) digits ===== */
-  .flip-group{display:flex;width:100%;gap:clamp(3px,.6vw,7px);justify-content:center}
+  .flip-group{display:flex;width:100%;gap:clamp(4px,.7vw,9px);justify-content:center}
   .flip-unit{
     --h:clamp(3.4rem,11vw,8rem);
     position:relative;width:.74em;height:1em;
     font-size:var(--h);font-family:var(--head);font-weight:700;line-height:1;
-    perspective:380px;border-radius:.1em;
-    box-shadow:0 .06em .18em rgba(0,0,0,.5);
+    perspective:300px;border-radius:.11em;
+    /* layered drop shadow + rim light: makes the tile sit above the card, touchable */
+    box-shadow:
+      0 .012em 0 rgba(255,255,255,.14) inset,
+      0 .04em .06em rgba(0,0,0,.55),
+      0 .12em .22em rgba(0,0,0,.5),
+      0 .28em .5em rgba(0,0,0,.38);
   }
   .countdown .cd .flip-unit b{
     position:absolute;left:0;width:100%;height:50%;overflow:hidden;margin:0;
     display:flex;justify-content:center;
     font-size:1em;line-height:1em;color:var(--gold);
-    background:linear-gradient(180deg,#16223f,#0d1830);
     backface-visibility:hidden;will-change:transform;
+    text-shadow:0 .012em .015em rgba(0,0,0,.5);
   }
   .countdown .cd .flip-unit b>i{font-style:normal;height:1em;line-height:1em;display:block}
+  /* shading overlay sitting above the digit on each leaf */
+  .countdown .cd .flip-unit b::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0}
   .flip-unit .static-top,.flip-unit .fold-top{
-    top:0;align-items:flex-start;border-radius:.1em .1em 0 0;
-    border-bottom:1px solid rgba(0,0,0,.55);
+    top:0;align-items:flex-start;border-radius:.11em .11em 0 0;
+    border-bottom:1px solid rgba(0,0,0,.6);
+    /* top sheen + body */
+    background:
+      linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,0) 26%),
+      linear-gradient(180deg,#1c2b52,#14213d 68%,#0f1c35);
   }
   .flip-unit .static-bottom,.flip-unit .fold-bottom{
-    bottom:0;align-items:flex-end;border-radius:0 0 .1em .1em;
-    background:linear-gradient(180deg,#101c36,#0a1326);
+    bottom:0;align-items:flex-end;border-radius:0 0 .11em .11em;
+    /* hinge shadow at top of lower half + body */
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0) 30%),
+      linear-gradient(180deg,#101d37,#0a1427);
   }
-  .flip-unit .fold-top{z-index:3;transform-origin:bottom;transform:rotateX(-90deg)}
-  .flip-unit .fold-bottom{z-index:3;transform-origin:top;transform:rotateX(90deg)}
-  .flip-unit.flipping .fold-top{animation:foldTop .6s cubic-bezier(.3,.1,.2,1) forwards}
-  .flip-unit.flipping .fold-bottom{animation:foldBottom .6s cubic-bezier(.3,.1,.2,1) forwards}
-  @keyframes foldTop{0%{transform:rotateX(0)}50%,100%{transform:rotateX(-90deg)}}
-  @keyframes foldBottom{0%,50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+  .flip-unit .fold-top{z-index:5;transform-origin:bottom;transform:rotateX(0deg)}
+  .flip-unit .fold-bottom{z-index:5;transform-origin:top;transform:rotateX(90deg)}
+  .flip-unit .fold-top::after{background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.4))}
+  .flip-unit .fold-bottom::after{background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.7))}
+  /* cast shadow the falling leaf throws on the lower half */
+  .flip-unit .static-bottom::after{background:linear-gradient(180deg,rgba(0,0,0,.6),rgba(0,0,0,0) 62%)}
+
+  .flip-unit.flipping .fold-top{animation:foldTop .82s cubic-bezier(.5,.04,.86,.24) forwards}
+  .flip-unit.flipping .fold-bottom{animation:foldBottom .82s cubic-bezier(.28,.72,.34,1) forwards}
+  .flip-unit.flipping .fold-top::after{animation:shadeFall .82s cubic-bezier(.5,.04,.86,.24) forwards}
+  .flip-unit.flipping .fold-bottom::after{animation:shadeRise .82s cubic-bezier(.28,.72,.34,1) forwards}
+  .flip-unit.flipping .static-bottom::after{animation:castShadow .82s ease-out forwards}
+  .flip-unit.flipping{animation:unitSettle .82s ease-out}
+
+  /* gravity fall: top leaf accelerates down through the first half */
+  @keyframes foldTop{0%{transform:rotateX(0)}45%,100%{transform:rotateX(-90deg)}}
+  /* heavy landing: bottom leaf swings down and bounces/settles with diminishing wobble */
+  @keyframes foldBottom{
+    0%,45%{transform:rotateX(90deg)}
+    72%{transform:rotateX(-9deg)}
+    84%{transform:rotateX(5deg)}
+    92%{transform:rotateX(-2.5deg)}
+    97%{transform:rotateX(1deg)}
+    100%{transform:rotateX(0)}
+  }
+  @keyframes shadeFall{0%{opacity:0}45%,100%{opacity:1}}
+  @keyframes shadeRise{0%,45%{opacity:1}100%{opacity:0}}
+  @keyframes castShadow{0%{opacity:0}38%{opacity:.85}55%{opacity:0}100%{opacity:0}}
+  /* whole tile gives a tiny seat/recoil at the moment of impact — sells the weight */
+  @keyframes unitSettle{0%,60%{transform:translateY(0)}74%{transform:translateY(.018em)}86%{transform:translateY(-.006em)}100%{transform:translateY(0)}}
   @media (prefers-reduced-motion:reduce){
-    .flip-unit.flipping .fold-top,.flip-unit.flipping .fold-bottom{animation-duration:.001s}
+    .flip-unit.flipping .fold-top,.flip-unit.flipping .fold-bottom,
+    .flip-unit.flipping .fold-top::after,.flip-unit.flipping .fold-bottom::after,
+    .flip-unit.flipping .static-bottom::after,.flip-unit.flipping{animation-duration:.001s}
   }
 
   .scroll-hint{margin-top:34px;color:var(--gold);font-family:var(--head);font-weight:600;letter-spacing:.2em;font-size:.85rem;animation:bob 1.8s infinite}
@@ -697,7 +737,7 @@
     if(first){i('static-bottom').textContent=val;return;}
     u.classList.remove('flipping');void u.offsetWidth;u.classList.add('flipping');
     clearTimeout(u._t);
-    u._t=setTimeout(()=>{i('static-bottom').textContent=val;u.classList.remove('flipping');},620);
+    u._t=setTimeout(()=>{i('static-bottom').textContent=val;u.classList.remove('flipping');},840);
   }
   function setGroup(el,str){
     while(el.children.length<str.length)el.appendChild(buildUnit());
