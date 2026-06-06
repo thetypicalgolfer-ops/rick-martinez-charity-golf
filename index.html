@@ -126,23 +126,23 @@
       linear-gradient(180deg,#e7e7e9,#d7d7da);
     box-shadow:inset 0 -.02em 0 rgba(255,255,255,.5),inset .04em 0 .05em rgba(0,0,0,.05),inset -.04em 0 .05em rgba(0,0,0,.05);
   }
-  /* metal hinge rod across the middle */
+  /* steel hinge rod across the middle */
   .flip-unit::before{
-    content:"";position:absolute;z-index:6;left:-.09em;right:-.09em;top:50%;height:.05em;
-    transform:translateY(-50%);border-radius:.05em;
-    background:linear-gradient(180deg,#f4f6f8 0%,#cfd3d8 35%,#9a9fa5 65%,#6b7177 100%);
-    box-shadow:0 .018em .025em rgba(0,0,0,.4),inset 0 .01em 0 rgba(255,255,255,.7);
+    content:"";position:absolute;z-index:6;left:-.075em;right:-.075em;top:50%;height:.036em;
+    transform:translateY(-50%);border-radius:.04em;
+    background:linear-gradient(180deg,#aeb4bb 0%,#6b7178 38%,#444a50 70%,#2c3136 100%);
+    box-shadow:0 .015em .022em rgba(0,0,0,.45),inset 0 .006em 0 rgba(255,255,255,.4);
   }
-  /* protruding hinge pin caps on each side */
+  /* protruding steel hinge pin caps on each side */
   .flip-unit::after{
-    content:"";position:absolute;z-index:7;top:50%;left:-.14em;right:-.14em;height:.115em;
+    content:"";position:absolute;z-index:7;top:50%;left:-.1em;right:-.1em;height:.078em;
     transform:translateY(-50%);pointer-events:none;
     background-repeat:no-repeat;background-position:left center,right center;
-    background-size:.115em .115em,.115em .115em;
+    background-size:.078em .078em,.078em .078em;
     background-image:
-      radial-gradient(circle at 42% 35%,#f6f8fa 0,#c9ced3 52%,#7e848a 100%),
-      radial-gradient(circle at 42% 35%,#f6f8fa 0,#c9ced3 52%,#7e848a 100%);
-    filter:drop-shadow(0 .012em .018em rgba(0,0,0,.45));
+      radial-gradient(circle at 40% 32%,#c2c8ce 0,#6d747b 50%,#363b41 100%),
+      radial-gradient(circle at 40% 32%,#c2c8ce 0,#6d747b 50%,#363b41 100%);
+    filter:drop-shadow(0 .01em .015em rgba(0,0,0,.5));
   }
   .flip-unit .fold-top{z-index:4;transform-origin:bottom;transform:rotateX(-90deg)}
   .flip-unit .fold-bottom{z-index:4;transform-origin:top;transform:rotateX(90deg)}
