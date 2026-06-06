@@ -569,31 +569,31 @@
       <p>A full day on the course packed with everything that makes a great cause even greater.</p>
     </div>
     <div class="egrid">
-      <div class="ecard reveal" role="button" tabindex="0" aria-label="18 Holes of Golf — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+      <div class="ecard reveal" role="button" tabindex="0" aria-label="18 Holes of Golf — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
         <div class="ecard-inner">
           <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🏌️</span><b>18 Holes<br>of Golf</b></div>
           <div class="ecard-face ecard-back"><p>A full 18 at the championship Golf Club of Texas — cart included, shotgun start.</p></div>
         </div>
       </div>
-      <div class="ecard reveal" data-d="1" role="button" tabindex="0" aria-label="Player Gifts — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+      <div class="ecard reveal" data-d="1" role="button" tabindex="0" aria-label="Player Gifts — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
         <div class="ecard-inner">
           <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🎁</span><b>Player<br>Gifts</b></div>
           <div class="ecard-face ecard-back"><p>Every golfer takes home a swag bag packed with goodies.</p></div>
         </div>
       </div>
-      <div class="ecard reveal" data-d="2" role="button" tabindex="0" aria-label="Breakfast and Lunch — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+      <div class="ecard reveal" data-d="2" role="button" tabindex="0" aria-label="Breakfast and Lunch — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
         <div class="ecard-inner">
           <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🍳</span><b>Breakfast<br>&amp; Lunch</b></div>
           <div class="ecard-face ecard-back"><p>Fuel up with a hot breakfast and a full lunch — on us.</p></div>
         </div>
       </div>
-      <div class="ecard reveal" data-d="3" role="button" tabindex="0" aria-label="Contests and Prizes — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+      <div class="ecard reveal" data-d="3" role="button" tabindex="0" aria-label="Contests and Prizes — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
         <div class="ecard-inner">
           <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🏆</span><b>Contests<br>&amp; Prizes</b></div>
           <div class="ecard-face ecard-back"><p>Longest drive, closest to the pin, hole-in-one &amp; more.</p></div>
         </div>
       </div>
-      <div class="ecard reveal" data-d="4" role="button" tabindex="0" aria-label="Great Cause Greater Impact — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+      <div class="ecard reveal" data-d="4" role="button" tabindex="0" aria-label="Great Cause Greater Impact — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
         <div class="ecard-inner">
           <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🤝</span><b>Great Cause<br>Greater Impact</b></div>
           <div class="ecard-face ecard-back"><p>Proceeds fund education &amp; mentorship across San Antonio.</p></div>
@@ -912,6 +912,11 @@
         ? 'Location permission denied — showing the course. Tap the button below for directions.'
         : 'Couldn’t get your location — showing the course below.';
     },{enableHighAccuracy:true,timeout:9000,maximumAge:300000});
+  }
+  /* flip a card; any other open card flips back to normal */
+  function flipCard(el){
+    document.querySelectorAll('.ecard.is-flipped').forEach(c=>{if(c!==el)c.classList.remove('is-flipped')});
+    el.classList.toggle('is-flipped');
   }
   function closeMap(){mapOv.classList.remove('show');document.body.style.overflow='';mapFrame.src='about:blank';}
   mapOv.addEventListener('click',e=>{if(e.target===mapOv)closeMap()});
