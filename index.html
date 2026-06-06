@@ -56,10 +56,11 @@
   .topbar .tb-left b{font-family:var(--head);font-weight:600;letter-spacing:.04em;font-size:1.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .topbar .tb-left small{display:block;color:var(--gold);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
   .topbar .tb-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-  .topbar .mini-count{display:flex;gap:6px;color:var(--cream)}
-  .topbar .mini-count div{text-align:center;background:rgba(255,255,255,.08);border-radius:5px;padding:4px 8px;min-width:42px}
-  .topbar .mini-count b{font-family:var(--head);font-weight:700;font-size:1.1rem;color:var(--gold);display:block;line-height:1}
-  .topbar .mini-count span{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#aeb7cc}
+  .topbar .mini-count{display:flex;gap:9px;color:var(--cream);align-items:flex-start}
+  .topbar .mini-count .mc{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .topbar .mini-count span{font-family:var(--head);font-weight:600;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#aeb7cc;line-height:1}
+  .mini-count .flip-group{display:flex;gap:2px}
+  .mini-count .flip-unit{font-size:1.35rem}
   @media(max-width:720px){.topbar .mini-count{display:none}}
   .reg-btn{background:var(--red);color:#fff;font-family:var(--head);font-weight:600;letter-spacing:.06em;font-size:1.1rem;padding:11px 22px;border-radius:50px;border:0;cursor:pointer;box-shadow:0 8px 22px rgba(224,25,51,.45);transition:transform .25s var(--pop),background .25s;white-space:nowrap;animation:pulse 2.2s infinite}
   .reg-btn:hover{background:#fff;color:var(--red);transform:scale(1.06)}
@@ -120,13 +121,13 @@
     perspective:520px;border-radius:.15em;background:#15171b;
     box-shadow:0 .05em .04em rgba(0,0,0,.14),0 .16em .34em rgba(0,0,0,.34);
   }
-  .countdown .cd .flip-unit b{
+  .countdown .cd .flip-unit b,.mini-count .flip-unit b{
     position:absolute;left:0;width:100%;height:calc(50% - .024em);overflow:hidden;margin:0;
     display:flex;justify-content:center;
     font-size:1em;line-height:1em;color:#101114;
     backface-visibility:hidden;will-change:transform;
   }
-  .countdown .cd .flip-unit b>i{font-style:normal;height:1.24em;line-height:1.24em;display:block}
+  .countdown .cd .flip-unit b>i,.mini-count .flip-unit b>i{font-style:normal;height:1.24em;line-height:1.24em;display:block}
   /* convex sheen: light edges, soft side vignette so flaps look molded */
   .flip-unit .static-top,.flip-unit .fold-top{
     top:0;align-items:flex-start;border-radius:.15em .15em 0 0;
@@ -484,9 +485,9 @@
   </div>
   <div class="tb-right">
     <div class="mini-count" id="miniCount">
-      <div><b id="m-d">--</b><span>Days</span></div>
-      <div><b id="m-h">--</b><span>Hrs</span></div>
-      <div><b id="m-m">--</b><span>Min</span></div>
+      <div class="mc"><div class="flip-group" id="m-d"></div><span>Days</span></div>
+      <div class="mc"><div class="flip-group" id="m-h"></div><span>Hrs</span></div>
+      <div class="mc"><div class="flip-group" id="m-m"></div><span>Min</span></div>
     </div>
     <button class="reg-btn" onclick="openModal('player')">🏌️ Register Now</button>
   </div>
@@ -866,7 +867,7 @@
     const z=n=>String(n).padStart(2,'0');
     setGroup(C.d,z(d));setGroup(C.h,z(h));setGroup(C.m,z(m));setGroup(C.s,z(s));
     const md=document.getElementById('m-d'),mh=document.getElementById('m-h'),mm=document.getElementById('m-m');
-    if(md){md.textContent=d;mh.textContent=z(h);mm.textContent=z(m);}
+    if(md){setGroup(md,z(d));setGroup(mh,z(h));setGroup(mm,z(m));}
   }
   tick();setInterval(tick,1000);
 
