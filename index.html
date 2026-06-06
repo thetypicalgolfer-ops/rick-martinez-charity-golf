@@ -362,7 +362,11 @@
   .modal h3{font-family:var(--head);font-weight:700;font-size:2rem;color:var(--navy);text-transform:uppercase;line-height:1;margin-bottom:6px}
   .modal .mtag{font-family:var(--script);font-weight:700;color:var(--red);margin-bottom:16px}
   .modal .mintro{color:#41506a;font-size:.95rem;margin-bottom:16px}
-  .modal .msel{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;border-radius:14px;padding:14px 20px;margin-bottom:16px;border:1px solid rgba(242,183,5,.4)}
+  .modal .msel{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--navy);color:#fff;border-radius:14px;padding:14px 20px;margin-bottom:16px;border:1px solid rgba(242,183,5,.4);cursor:pointer;transition:border-color .2s,background .2s}
+  .modal .msel:hover{border-color:var(--gold);background:#0a1c3d}
+  .modal .msel .msel-r{display:flex;align-items:center;gap:9px}
+  .modal .msel .msel-caret{font-style:normal;color:var(--gold);font-size:1.15rem;line-height:1}
+  .modal .msel #mPick{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;margin:0;-webkit-appearance:none;appearance:none}
   .modal .msel span{font-family:var(--head);font-weight:700;font-size:1.02rem;line-height:1.15}
   .modal .msel b{font-family:var(--head);font-weight:800;font-size:1.9rem;color:var(--gold);white-space:nowrap}
   .modal .mrow{display:flex;gap:12px;align-items:flex-start;margin-bottom:13px;font-size:.94rem}
@@ -702,7 +706,7 @@
     <h3 id="mTitle">Register Now!</h3>
     <div class="mtag">Let's tee up for tomorrow 🇺🇸</div>
     <p class="mintro" id="mIntro"></p>
-    <div class="msel"><span id="mSelKind">Solo Player Entry</span><b id="mSelAmt">$160</b></div>
+    <div class="msel"><span id="mSelKind">Solo Player Entry</span><span class="msel-r"><b id="mSelAmt">$160</b><i class="msel-caret">▾</i></span><select id="mPick" aria-label="Change selection"></select></div>
     <a class="mbtn" id="mCash" href="https://cash.app/$LovingHeartSA/160" target="_blank" rel="noopener">📱 Pay <span id="mCashAmt">$160</span> with Cash App</a>
     <div class="mrow"><span class="ic">📞</span><div>Call to register<br><a href="tel:2103479308"><b>210-347-9308</b></a></div></div>
     <div class="mrow"><span class="ic">✉️</span><div>Email your registration (pre-filled)<br><a id="mEmail" href="mailto:charitygolffsa@gmail.com">charitygolffsa@gmail.com</a></div></div>
@@ -795,9 +799,20 @@
     threehole:{title:'Three Hole Sponsor',kind:'Three Hole Sponsor',amount:250,
       intro:"Get your business recognized with signage at THREE golf holes — a simple, high-impact way to support the cause."}
   };
-  function openModal(key){
+  /* build the "change selection" dropdown from OPTIONS once */
+  const mPick=document.getElementById('mPick');
+  const PICK_LABEL={player:'Solo Player',team:'Team of 4',platinum:'Platinum Sponsor',gold:'Gold Sponsor',silver:'Silver Sponsor',bronze:'Bronze Sponsor',threehole:'Three Hole Sponsor'};
+  Object.keys(OPTIONS).forEach(k=>{
+    const o=OPTIONS[k],opt=document.createElement('option');
+    opt.value=k;opt.textContent=(PICK_LABEL[k]||o.kind)+' — $'+o.amount.toLocaleString();
+    mPick.appendChild(opt);
+  });
+  mPick.addEventListener('change',()=>setModal(mPick.value));
+  /* populate modal content for a given selection (no open/close) */
+  function setModal(key){
     const o=OPTIONS[key]||OPTIONS.player;
     const amtStr='$'+o.amount.toLocaleString();
+    mPick.value=(OPTIONS[key]?key:'player');
     document.getElementById('mTitle').textContent=o.title;
     document.getElementById('mIntro').textContent=o.intro;
     document.getElementById('mSelKind').textContent=o.kind;
@@ -811,6 +826,9 @@
       +(/sponsor|hole/i.test(o.kind)?"\nCompany / business name:\n":"")
       +"\nThank you!";
     document.getElementById('mEmail').href='mailto:charitygolffsa@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  }
+  function openModal(key){
+    setModal(key);
     modal.classList.add('show');document.body.style.overflow='hidden';
     burst();
   }
