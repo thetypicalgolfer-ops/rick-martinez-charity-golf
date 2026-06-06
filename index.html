@@ -222,8 +222,11 @@
   @media(max-width:820px){.mission::after{background-attachment:scroll}}
   .orgs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;z-index:2}
   @media(max-width:820px){.orgs{grid-template-columns:1fr}}
-  .org{background:#fff;border-radius:14px;padding:30px 26px;text-align:center;border:2px solid transparent;box-shadow:0 16px 40px rgba(10,28,61,.08);transition:transform .3s var(--ease),border-color .3s}
-  .org:hover{transform:translateY(-8px);border-color:var(--gold)}
+  .org{display:block;cursor:pointer;background:#fff;border-radius:14px;padding:30px 26px;text-align:center;border:2px solid transparent;box-shadow:0 16px 40px rgba(10,28,61,.08);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+  .org:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 22px 50px rgba(10,28,61,.18)}
+  .org .more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--red);font-family:var(--head);font-weight:700;letter-spacing:.04em;font-size:.92rem}
+  .org .more .ar{transition:transform .25s}
+  .org:hover .more .ar{transform:translateX(5px)}
   .org .ic{width:66px;height:66px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-size:1.8rem;margin:0 auto 16px}
   .org:nth-child(2) .ic{background:var(--red)}
   .org h3{font-family:var(--head);font-weight:600;letter-spacing:.04em;font-size:1.35rem;color:var(--navy);margin-bottom:8px}
@@ -559,9 +562,9 @@
       <p>Come for the golf, stay for the impact! Every entry and sponsorship fuels education, mentorship, and outreach for local families and youth — <strong>driving change, building futures.</strong></p>
     </div>
     <div class="orgs">
-      <div class="org reveal"><div class="ic">🎓</div><h3>Learn for Life Center</h3><p>Providing education, mentorship and opportunities for a brighter future across San Antonio.</p></div>
-      <div class="org reveal" data-d="1"><div class="ic">❤️</div><h3>Loving Heart Foundation</h3><p>Investing in community outreach that creates real opportunities to change lives.</p></div>
-      <div class="org reveal" data-d="2"><div class="ic">🇺🇸</div><h3>America 250</h3><p>Celebrate 250 years of freedom &amp; community — wear your best American attire and bring your flags!</p></div>
+      <a class="org reveal" href="blog.html"><div class="ic">🎓</div><h3>Learn for Life Center</h3><p>Providing education, mentorship and opportunities for a brighter future across San Antonio.</p><span class="more">Read our story <span class="ar">→</span></span></a>
+      <a class="org reveal" data-d="1" href="blog.html"><div class="ic">❤️</div><h3>Loving Heart Foundation</h3><p>Investing in community outreach that creates real opportunities to change lives.</p><span class="more">Read our story <span class="ar">→</span></span></a>
+      <a class="org reveal" data-d="2" href="blog.html"><div class="ic">🇺🇸</div><h3>America 250</h3><p>Celebrate 250 years of freedom &amp; community — wear your best American attire and bring your flags!</p><span class="more">Read our story <span class="ar">→</span></span></a>
     </div>
   </div>
 </section>
