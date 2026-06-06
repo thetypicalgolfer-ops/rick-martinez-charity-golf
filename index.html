@@ -233,9 +233,10 @@
   .expect::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1.4px 1.4px at 15% 25%,rgba(255,255,255,.4),transparent),radial-gradient(1.3px 1.3px at 70% 18%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 55%,rgba(255,255,255,.25),transparent),radial-gradient(1.2px 1.2px at 35% 70%,rgba(255,255,255,.3),transparent)}
   .expect .section-head h2{color:#fff}
   .expect .section-head .kick{color:var(--gold)}
-  .egrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;z-index:2}
-  @media(max-width:880px){.egrid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:440px){.egrid{grid-template-columns:1fr}}
+  .egrid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;position:relative;z-index:2}
+  .egrid .ecard{flex:1 1 165px;max-width:210px}
+  @media(max-width:880px){.egrid .ecard{flex:1 1 calc(50% - 8px);max-width:none}}
+  @media(max-width:440px){.egrid .ecard{flex-basis:100%}}
   .ecard{background:none;border:0;padding:0;text-align:center;cursor:pointer;perspective:1200px;min-height:clamp(158px,9vw,188px);transition:transform .35s var(--pop)}
   .ecard:hover{transform:translateY(-8px)}
   /* 3D flip — smooth symmetric easy-ease */
@@ -571,7 +572,7 @@
     <div class="section-head reveal">
       <span class="kick">join us for a day of</span>
       <h2>Golf, Fun &amp; Impact!</h2>
-      <p>A full day on the course packed with everything that makes a great cause even greater.</p>
+      <p>A full day of golf, games, raffles and contests — all with one mission: to raise as much money as we possibly can for the kids. 💛</p>
     </div>
     <div class="egrid">
       <div class="ecard reveal" role="button" tabindex="0" aria-label="18 Holes of Golf — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
@@ -595,7 +596,19 @@
       <div class="ecard reveal" data-d="3" role="button" tabindex="0" aria-label="Contests and Prizes — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
         <div class="ecard-inner">
           <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🏆</span><b>Contests<br>&amp; Prizes</b></div>
-          <div class="ecard-face ecard-back"><p>Longest drive, closest to the pin, hole-in-one &amp; more.</p></div>
+          <div class="ecard-face ecard-back"><p>Longest drive, closest to the pin &amp; a $10,000 hole-in-one — every entry raises more for the kids.</p></div>
+        </div>
+      </div>
+      <div class="ecard reveal" data-d="4" role="button" tabindex="0" aria-label="Raffles — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
+        <div class="ecard-inner">
+          <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🎟️</span><b>Raffles</b></div>
+          <div class="ecard-face ecard-back"><p>Prize baskets, gear &amp; surprise drawings all day. Buy in, win big — 100% for the kids.</p></div>
+        </div>
+      </div>
+      <div class="ecard reveal" data-d="4" role="button" tabindex="0" aria-label="Putting Contest — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
+        <div class="ecard-inner">
+          <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">⛳</span><b>Putting<br>Contest</b></div>
+          <div class="ecard-face ecard-back"><p>Drain the winning putt on the green for cash &amp; prizes — and pile up more donations.</p></div>
         </div>
       </div>
       <div class="ecard reveal" data-d="4" role="button" tabindex="0" aria-label="Great Cause Greater Impact — flip for details" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this)}">
