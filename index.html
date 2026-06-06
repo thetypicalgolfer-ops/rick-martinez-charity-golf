@@ -120,11 +120,16 @@
   }
   .flip-unit .fold-top{z-index:3;transform-origin:bottom;transform:rotateX(-90deg)}
   .flip-unit .fold-bottom{z-index:3;transform-origin:top;transform:rotateX(90deg)}
-  .flip-unit.flipping .fold-top{animation:foldTop .7s ease-in forwards}
-  .flip-unit.flipping .fold-bottom{animation:foldBottom .7s ease-out forwards}
-  /* smooth two-phase flip: top leaf eases down, bottom leaf eases into place */
+  .flip-unit.flipping .fold-top{animation:foldTop .92s ease-in forwards}
+  .flip-unit.flipping .fold-bottom{animation:foldBottom .92s ease-out forwards}
+  /* smooth two-phase flip: top leaf eases down, bottom leaf eases in with a gentle bounce */
   @keyframes foldTop{0%{transform:rotateX(0)}50%,100%{transform:rotateX(-90deg)}}
-  @keyframes foldBottom{0%,50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+  @keyframes foldBottom{
+    0%,50%{transform:rotateX(90deg)}
+    80%{transform:rotateX(-6deg)}
+    91%{transform:rotateX(2.5deg)}
+    100%{transform:rotateX(0)}
+  }
   @media (prefers-reduced-motion:reduce){
     .flip-unit.flipping .fold-top,.flip-unit.flipping .fold-bottom{animation-duration:.001s}
   }
@@ -697,7 +702,7 @@
     if(first){i('static-bottom').textContent=val;return;}
     u.classList.remove('flipping');void u.offsetWidth;u.classList.add('flipping');
     clearTimeout(u._t);
-    u._t=setTimeout(()=>{i('static-bottom').textContent=val;u.classList.remove('flipping');},720);
+    u._t=setTimeout(()=>{i('static-bottom').textContent=val;u.classList.remove('flipping');},940);
   }
   function setGroup(el,str){
     while(el.children.length<str.length)el.appendChild(buildUnit());
