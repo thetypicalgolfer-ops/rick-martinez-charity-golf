@@ -372,6 +372,14 @@
   .modal .mbtn{display:block;width:100%;text-align:center;margin-top:8px;background:var(--red);color:#fff;font-family:var(--head);font-weight:600;letter-spacing:.06em;font-size:1.3rem;padding:14px;border-radius:50px;border:0;cursor:pointer;transition:background .25s,transform .25s}
   .modal .mbtn:hover{background:var(--red-deep);transform:scale(1.02)}
   .modal .note{font-size:.8rem;color:var(--muted);margin-top:14px;border-top:1px solid rgba(10,28,61,.12);padding-top:12px}
+  /* map popup */
+  .map-card{cursor:pointer}
+  .map-modal{max-width:640px}
+  .map-frame{width:100%;height:clamp(260px,44vh,440px);border:0;border-radius:14px;margin-bottom:12px;background:#0a1326;display:block}
+  .map-status{font-size:.84rem;color:#41506a;margin:0 0 14px;min-height:1.1em}
+  .map-actions{display:flex;flex-direction:column;gap:10px}
+  .modal .mbtn.alt{background:var(--navy)}
+  .modal .mbtn.alt:hover{background:#0a1c3d}
 
   @media(max-width:600px){
     /* sticky top bar: truncate brand text so the button never overlaps */
@@ -641,7 +649,7 @@
     <div class="dgrid">
       <a class="dcard cal-card reveal" href="event.ics"><div class="ic">📅</div><div class="k bebas">Date</div><div class="v display">Fri, July 10</div><small>2026 · 📲 Tap to add to calendar</small></a>
       <div class="dcard reveal" data-d="1"><div class="ic">⏰</div><div class="k bebas">Schedule</div><div class="v display">7AM · 8AM</div><small>Registration · Shotgun start</small></div>
-      <div class="dcard reveal" data-d="2"><div class="ic">📍</div><div class="k bebas">Location</div><div class="v display">Golf Club of Texas</div><small>13600 Briggs Ranch Rd, San Antonio, TX 78245</small></div>
+      <div class="dcard map-card reveal" data-d="2" role="button" tabindex="0" onclick="openMap()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMap()}"><div class="ic">📍</div><div class="k bebas">Location</div><div class="v display">Golf Club of Texas</div><small>13600 Briggs Ranch Rd · 🗺️ Tap for map &amp; directions</small></div>
       <div class="dcard reveal" data-d="3"><div class="ic">⛳</div><div class="k bebas">Format</div><div class="v display">4-Person Scramble</div><small>18 holes · contests &amp; prizes</small></div>
     </div>
   </div>
@@ -700,6 +708,22 @@
     <div class="mrow"><span class="ic">✉️</span><div>Email your registration (pre-filled)<br><a id="mEmail" href="mailto:charitygolffsa@gmail.com">charitygolffsa@gmail.com</a></div></div>
     <div class="mrow"><span class="ic">🌐</span><div>Register online<br><a href="https://www.charitygolffsa.org" target="_blank" rel="noopener">www.charitygolffsa.org</a></div></div>
     <div class="note">Checks payable to: The Learn for Life Center of San Antonio. Friday, July 10, 2026 · Golf Club of Texas, San Antonio · Registration 7:00 AM, shotgun start 8:00 AM.</div>
+  </div>
+</div>
+
+<!-- MAP MODAL -->
+<div class="ov" id="mapOv">
+  <div class="modal map-modal">
+    <button class="x" onclick="closeMap()" aria-label="Close">×</button>
+    <h3>Getting Here</h3>
+    <div class="mtag">Golf Club of Texas ⛳</div>
+    <p class="mintro">13600 Briggs Ranch Rd, San Antonio, TX 78245</p>
+    <iframe id="mapFrame" class="map-frame" title="Map to Golf Club of Texas" loading="lazy" allow="geolocation" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="map-status" id="mapStatus"></div>
+    <div class="map-actions">
+      <button class="mbtn" type="button" onclick="routeFromMe(false)">🧭 Directions from my location</button>
+      <a class="mbtn alt" id="mapOpenBtn" href="#" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+    </div>
   </div>
 </div>
 
@@ -793,6 +817,40 @@
   function closeModal(){modal.classList.remove('show');document.body.style.overflow=''}
   modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+  /* ===== Location map popup ===== */
+  const DEST='Golf Club of Texas, 13600 Briggs Ranch Rd, San Antonio, TX 78245';
+  const DESTENC=encodeURIComponent(DEST);
+  const mapOv=document.getElementById('mapOv');
+  const mapFrame=document.getElementById('mapFrame');
+  const mapStatus=document.getElementById('mapStatus');
+  const mapOpenBtn=document.getElementById('mapOpenBtn');
+  function openMap(){
+    mapFrame.src='https://www.google.com/maps?q='+DESTENC+'&output=embed';
+    mapOpenBtn.href='https://www.google.com/maps/search/?api=1&query='+DESTENC;
+    mapOpenBtn.textContent='📍 Open in Google Maps';
+    mapStatus.textContent='';
+    mapOv.classList.add('show');document.body.style.overflow='hidden';
+    routeFromMe(true); /* auto-add their location */
+  }
+  function routeFromMe(silent){
+    if(!navigator.geolocation){if(!silent)mapStatus.textContent='Location isn’t available on this device — tap “Open in Google Maps” for directions.';return;}
+    mapStatus.textContent='📍 Finding your location…';
+    navigator.geolocation.getCurrentPosition(p=>{
+      const lat=p.coords.latitude.toFixed(6),lng=p.coords.longitude.toFixed(6);
+      mapFrame.src='https://www.google.com/maps?saddr='+lat+','+lng+'&daddr='+DESTENC+'&output=embed';
+      mapStatus.textContent='✅ Route from your location to the course.';
+      mapOpenBtn.href='https://www.google.com/maps/dir/?api=1&origin='+lat+','+lng+'&destination='+DESTENC;
+      mapOpenBtn.textContent='🧭 Open turn-by-turn directions';
+    },err=>{
+      mapStatus.textContent=(err&&err.code===1)
+        ? 'Location permission denied — showing the course. Tap the button below for directions.'
+        : 'Couldn’t get your location — showing the course below.';
+    },{enableHighAccuracy:true,timeout:9000,maximumAge:300000});
+  }
+  function closeMap(){mapOv.classList.remove('show');document.body.style.overflow='';mapFrame.src='about:blank';}
+  mapOv.addEventListener('click',e=>{if(e.target===mapOv)closeMap()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMap()});
 
   /* ===== Confetti burst (on register click) ===== */
   const cc=document.getElementById('confetti'),cx=cc.getContext('2d');
