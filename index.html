@@ -57,10 +57,10 @@
   .topbar .tb-left small{display:block;color:var(--gold);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
   .topbar .tb-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
   .topbar .mini-count{display:flex;gap:6px;color:var(--cream);align-items:center}
-  .topbar .mini-count .mc{text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(242,183,5,.28);border-radius:6px;padding:4px 8px;min-width:38px;perspective:220px}
-  .topbar .mini-count .mc b{font-family:var(--head);font-weight:700;font-size:1.15rem;color:var(--gold);display:block;line-height:1.05;backface-visibility:hidden;transform-origin:center}
-  .topbar .mini-count .mc b.flip{animation:miniFlip .38s ease-in-out}
-  @keyframes miniFlip{0%{transform:rotateX(0)}49%{transform:rotateX(-90deg)}50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+  .topbar .mini-count .mc{text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(242,183,5,.28);border-radius:6px;padding:4px 8px;min-width:38px;perspective:450px}
+  .topbar .mini-count .mc b{font-family:var(--head);font-weight:700;font-size:1.15rem;color:var(--gold);display:block;line-height:1.05;transform-origin:center}
+  .topbar .mini-count .mc b.flip{animation:miniFlip .4s ease-in-out}
+  @keyframes miniFlip{0%{transform:rotateX(0deg)}50%{transform:rotateX(-90deg)}100%{transform:rotateX(0deg)}}
   .topbar .mini-count .mc span{font-family:var(--head);font-weight:600;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#aeb7cc;display:block;margin-top:2px}
   @media(max-width:720px){.topbar .mini-count{display:none}}
   .reg-btn{background:var(--red);color:#fff;font-family:var(--head);font-weight:600;letter-spacing:.06em;font-size:1.1rem;padding:11px 22px;border-radius:50px;border:0;cursor:pointer;box-shadow:0 8px 22px rgba(224,25,51,.45);transition:transform .25s var(--pop),background .25s;white-space:nowrap;animation:pulse 2.2s infinite}
@@ -866,7 +866,7 @@
     const first=!el.dataset.v;el.dataset.v=val;
     if(first){el.textContent=val;return;}
     el.classList.remove('flip');void el.offsetWidth;el.classList.add('flip');
-    clearTimeout(el._t);el._t=setTimeout(()=>{el.textContent=val;},190);
+    clearTimeout(el._t);el._t=setTimeout(()=>{el.textContent=val;},200);
   }
   function tick(){
     const now=Date.now();let diff=Math.max(0,target-now);
