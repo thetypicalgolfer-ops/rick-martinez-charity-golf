@@ -100,11 +100,11 @@
     --h:clamp(3.4rem,11vw,8rem);
     position:relative;width:1.5em;max-width:100%;height:1.24em;
     font-size:var(--h);font-family:var(--head);font-weight:700;line-height:1;
-    perspective:520px;border-radius:.15em;
+    perspective:520px;border-radius:.15em;background:#15171b;
     box-shadow:0 .05em .04em rgba(0,0,0,.14),0 .16em .34em rgba(0,0,0,.34);
   }
   .countdown .cd .flip-unit b{
-    position:absolute;left:0;width:100%;height:50%;overflow:hidden;margin:0;
+    position:absolute;left:0;width:100%;height:calc(50% - .024em);overflow:hidden;margin:0;
     display:flex;justify-content:center;
     font-size:1em;line-height:1em;color:#101114;
     backface-visibility:hidden;will-change:transform;
@@ -128,17 +128,17 @@
   }
   /* steel hinge rod across the middle */
   .flip-unit::before{
-    content:"";position:absolute;z-index:6;left:-.075em;right:-.075em;top:50%;height:.036em;
+    content:"";position:absolute;z-index:6;left:-.075em;right:-.075em;top:50%;height:.028em;
     transform:translateY(-50%);border-radius:.04em;
     background:linear-gradient(180deg,#aeb4bb 0%,#6b7178 38%,#444a50 70%,#2c3136 100%);
     box-shadow:0 .015em .022em rgba(0,0,0,.45),inset 0 .006em 0 rgba(255,255,255,.4);
   }
   /* protruding steel hinge pin caps on each side */
   .flip-unit::after{
-    content:"";position:absolute;z-index:7;top:50%;left:-.1em;right:-.1em;height:.078em;
+    content:"";position:absolute;z-index:7;top:50%;left:-.05em;right:-.05em;height:.06em;
     transform:translateY(-50%);pointer-events:none;
     background-repeat:no-repeat;background-position:left center,right center;
-    background-size:.078em .078em,.078em .078em;
+    background-size:.06em .06em,.06em .06em;
     background-image:
       radial-gradient(circle at 40% 32%,#c2c8ce 0,#6d747b 50%,#363b41 100%),
       radial-gradient(circle at 40% 32%,#c2c8ce 0,#6d747b 50%,#363b41 100%);
