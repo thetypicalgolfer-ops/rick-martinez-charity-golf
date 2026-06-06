@@ -56,11 +56,11 @@
   .topbar .tb-left b{font-family:var(--head);font-weight:600;letter-spacing:.04em;font-size:1.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .topbar .tb-left small{display:block;color:var(--gold);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
   .topbar .tb-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-  .topbar .mini-count{display:flex;gap:9px;color:var(--cream);align-items:flex-start}
-  .topbar .mini-count .mc{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .topbar .mini-count{display:flex;gap:9px;color:var(--cream);align-items:center;height:48px;overflow:hidden}
+  .topbar .mini-count .mc{display:flex;flex-direction:column;align-items:center;gap:2px}
   .topbar .mini-count span{font-family:var(--head);font-weight:600;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:#aeb7cc;line-height:1}
-  .topbar .mini-count .flip-group{display:flex;gap:2px;width:auto}
-  .topbar .mini-count .flip-unit{font-size:1.6rem;width:1.5em;height:1.24em;max-width:none;flex:0 0 auto}
+  .topbar .mini-count .flip-group{display:flex;gap:2px;width:auto;align-items:center}
+  .topbar .mini-count .flip-unit{font-size:18px;width:27px;height:23px;min-height:0;max-width:none;max-height:23px;flex:0 0 auto;perspective:160px}
   @media(max-width:720px){.topbar .mini-count{display:none}}
   .reg-btn{background:var(--red);color:#fff;font-family:var(--head);font-weight:600;letter-spacing:.06em;font-size:1.1rem;padding:11px 22px;border-radius:50px;border:0;cursor:pointer;box-shadow:0 8px 22px rgba(224,25,51,.45);transition:transform .25s var(--pop),background .25s;white-space:nowrap;animation:pulse 2.2s infinite}
   .reg-btn:hover{background:#fff;color:var(--red);transform:scale(1.06)}
