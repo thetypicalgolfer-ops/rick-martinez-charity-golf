@@ -91,7 +91,7 @@
   .countdown{width:100%;display:flex;gap:clamp(10px,1.8vw,26px);justify-content:center;flex-wrap:wrap}
   .countdown .cd{flex:1 1 0;min-width:0;background:none;border:none;border-radius:0;padding:clamp(14px,3vw,30px) 8px;box-shadow:none;text-align:center}
   .countdown .cd b{font-family:var(--head);font-weight:700;font-size:clamp(3.4rem,11vw,8rem);color:var(--gold);display:block;line-height:1}
-  .countdown .cd span{font-family:var(--head);font-weight:600;letter-spacing:.2em;font-size:clamp(.85rem,2vw,1.25rem);text-transform:uppercase;color:#c3cadb;display:block;margin-top:10px}
+  .countdown .cd span{font-family:var(--head);font-weight:600;letter-spacing:.2em;font-size:clamp(.85rem,2vw,1.25rem);text-transform:uppercase;color:#c3cadb;display:block;margin-bottom:12px}
   .cd-label{width:100%;text-align:center;color:var(--cream);font-family:var(--head);font-weight:600;letter-spacing:.2em;font-size:clamp(1.1rem,3vw,1.7rem);margin-bottom:14px;opacity:.92}
 
   /* ===== Split-flap (mechanical flip-clock) tiles ===== */
@@ -393,7 +393,7 @@
     .countdown .cd{min-width:0;flex:1 1 0;padding:16px 4px;border-radius:12px;border-width:1px}
     .countdown .cd .flip-unit{font-size:clamp(1.7rem,8vw,2.6rem)}
     .flip-group{gap:3px}
-    .countdown .cd span{font-size:.58rem;letter-spacing:.04em;margin-top:6px}
+    .countdown .cd span{font-size:.58rem;letter-spacing:.04em;margin-bottom:7px;margin-top:0}
     /* Golf, Fun & Impact: compact + glanceable on mobile */
     .expect .wrap{padding-top:46px;padding-bottom:46px}
     .expect .section-head{margin-bottom:22px}
@@ -448,10 +448,10 @@
   <div class="cta-inner">
     <div class="countdown" id="countdown">
       <div class="cd-label bebas">⛳ Tee-off countdown to July 10, 2026</div>
-      <div class="cd"><div class="flip-group" id="c-d"></div><span>Days</span></div>
-      <div class="cd"><div class="flip-group" id="c-h"></div><span>Hours</span></div>
-      <div class="cd"><div class="flip-group" id="c-m"></div><span>Mins</span></div>
-      <div class="cd"><div class="flip-group" id="c-s"></div><span>Secs</span></div>
+      <div class="cd"><span>Days</span><div class="flip-group" id="c-d"></div></div>
+      <div class="cd"><span>Hours</span><div class="flip-group" id="c-h"></div></div>
+      <div class="cd"><span>Mins</span><div class="flip-group" id="c-m"></div></div>
+      <div class="cd"><span>Secs</span><div class="flip-group" id="c-s"></div></div>
     </div>
     <div class="hero-actions">
       <button class="big-cta player" onclick="openModal('player')">
