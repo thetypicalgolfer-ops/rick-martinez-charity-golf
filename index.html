@@ -373,7 +373,7 @@
   .modal .mbtn:hover{background:var(--red-deep);transform:scale(1.02)}
   .modal .note{font-size:.8rem;color:var(--muted);margin-top:14px;border-top:1px solid rgba(10,28,61,.12);padding-top:12px}
   /* map popup */
-  .map-card{cursor:pointer}
+  .map-card,.dcard[role=button]{cursor:pointer}
   .map-modal{max-width:640px}
   .map-frame{width:100%;height:clamp(260px,44vh,440px);border:0;border-radius:14px;margin-bottom:12px;background:#0a1326;display:block}
   .map-status{font-size:.84rem;color:#41506a;margin:0 0 14px;min-height:1.1em}
@@ -648,9 +648,9 @@
     </div>
     <div class="dgrid">
       <a class="dcard cal-card reveal" href="event.ics"><div class="ic">📅</div><div class="k bebas">Date</div><div class="v display">Fri, July 10</div><small>2026 · 📲 Tap to add to calendar</small></a>
-      <div class="dcard reveal" data-d="1"><div class="ic">⏰</div><div class="k bebas">Schedule</div><div class="v display">7AM · 8AM</div><small>Registration · Shotgun start</small></div>
+      <div class="dcard reveal" data-d="1" role="button" tabindex="0" onclick="openModal('player')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('player')}"><div class="ic">⏰</div><div class="k bebas">Schedule</div><div class="v display">7AM · 8AM</div><small>Registration · Shotgun start</small></div>
       <div class="dcard map-card reveal" data-d="2" role="button" tabindex="0" onclick="openMap()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMap()}"><div class="ic">📍</div><div class="k bebas">Location</div><div class="v display">Golf Club of Texas</div><small>13600 Briggs Ranch Rd · 🗺️ Tap for map &amp; directions</small></div>
-      <div class="dcard reveal" data-d="3"><div class="ic">⛳</div><div class="k bebas">Format</div><div class="v display">4-Person Scramble</div><small>18 holes · contests &amp; prizes</small></div>
+      <div class="dcard reveal" data-d="3" role="button" tabindex="0" onclick="openModal('player')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('player')}"><div class="ic">⛳</div><div class="k bebas">Format</div><div class="v display">4-Person Scramble</div><small>18 holes · contests &amp; prizes</small></div>
     </div>
   </div>
 </section>
