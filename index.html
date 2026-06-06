@@ -232,10 +232,18 @@
   .egrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;z-index:2}
   @media(max-width:880px){.egrid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:440px){.egrid{grid-template-columns:1fr}}
-  .ecard{background:rgba(255,255,255,.05);border:1px solid rgba(242,183,5,.3);border-radius:16px;padding:30px 16px;text-align:center;transition:transform .3s var(--pop),background .3s}
-  .ecard:hover{transform:translateY(-8px);background:rgba(224,25,51,.16)}
+  .ecard{background:none;border:0;padding:0;text-align:center;cursor:pointer;perspective:1200px;min-height:clamp(158px,9vw,188px);transition:transform .35s var(--pop)}
+  .ecard:hover{transform:translateY(-8px)}
+  /* 3D flip — smooth symmetric easy-ease */
+  .ecard-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.45,0,.55,1)}
+  .ecard.is-flipped .ecard-inner{transform:rotateY(180deg)}
+  .ecard-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:16px;border:1px solid rgba(242,183,5,.3);padding:24px 16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+  .ecard-front{background:rgba(255,255,255,.05)}
+  .ecard-back{transform:rotateY(180deg);background:linear-gradient(155deg,rgba(224,25,51,.26),rgba(10,28,61,.55))}
   .ecard .ic{font-size:2.6rem;display:block;margin-bottom:12px}
   .ecard b{font-family:var(--head);font-weight:600;letter-spacing:.04em;font-size:1.18rem;line-height:1.05;display:block}
+  .ecard-back p{font-size:.95rem;line-height:1.34;color:var(--cream);margin:0}
+  .ecard .flip-cue{position:absolute;top:8px;right:11px;font-size:1rem;color:rgba(242,183,5,.55);line-height:1}
 
   /* REGISTER big block */
   .register{position:relative;overflow:hidden;color:#fff;background:#0a1c3d}
@@ -411,9 +419,11 @@
     .expect .section-head{margin-bottom:22px}
     .expect .section-head p{display:none}
     .egrid{grid-template-columns:repeat(2,1fr);gap:10px}
-    .ecard{padding:16px 8px;border-radius:12px}
-    .ecard .ic{font-size:1.9rem;margin-bottom:6px}
-    .ecard b{font-size:.92rem}
+    .ecard{min-height:clamp(150px,42vw,176px)}
+    .ecard-face{padding:18px 11px;border-radius:12px}
+    .ecard .ic{font-size:2rem;margin-bottom:7px}
+    .ecard b{font-size:1.04rem}
+    .ecard-back p{font-size:.9rem;line-height:1.32}
     .egrid .ecard:last-child{grid-column:1 / -1;justify-self:center;width:calc(50% - 5px)}
   }
   @media(max-width:520px){
@@ -559,11 +569,36 @@
       <p>A full day on the course packed with everything that makes a great cause even greater.</p>
     </div>
     <div class="egrid">
-      <div class="ecard reveal"><span class="ic">🏌️</span><b>18 Holes<br>of Golf</b></div>
-      <div class="ecard reveal" data-d="1"><span class="ic">🎁</span><b>Player<br>Gifts</b></div>
-      <div class="ecard reveal" data-d="2"><span class="ic">🍳</span><b>Breakfast<br>&amp; Lunch</b></div>
-      <div class="ecard reveal" data-d="3"><span class="ic">🏆</span><b>Contests<br>&amp; Prizes</b></div>
-      <div class="ecard reveal" data-d="4"><span class="ic">🤝</span><b>Great Cause<br>Greater Impact</b></div>
+      <div class="ecard reveal" role="button" tabindex="0" aria-label="18 Holes of Golf — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+        <div class="ecard-inner">
+          <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🏌️</span><b>18 Holes<br>of Golf</b></div>
+          <div class="ecard-face ecard-back"><p>A full 18 at the championship Golf Club of Texas — cart included, shotgun start.</p></div>
+        </div>
+      </div>
+      <div class="ecard reveal" data-d="1" role="button" tabindex="0" aria-label="Player Gifts — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+        <div class="ecard-inner">
+          <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🎁</span><b>Player<br>Gifts</b></div>
+          <div class="ecard-face ecard-back"><p>Every golfer takes home a swag bag packed with goodies.</p></div>
+        </div>
+      </div>
+      <div class="ecard reveal" data-d="2" role="button" tabindex="0" aria-label="Breakfast and Lunch — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+        <div class="ecard-inner">
+          <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🍳</span><b>Breakfast<br>&amp; Lunch</b></div>
+          <div class="ecard-face ecard-back"><p>Fuel up with a hot breakfast and a full lunch — on us.</p></div>
+        </div>
+      </div>
+      <div class="ecard reveal" data-d="3" role="button" tabindex="0" aria-label="Contests and Prizes — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+        <div class="ecard-inner">
+          <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🏆</span><b>Contests<br>&amp; Prizes</b></div>
+          <div class="ecard-face ecard-back"><p>Longest drive, closest to the pin, hole-in-one &amp; more.</p></div>
+        </div>
+      </div>
+      <div class="ecard reveal" data-d="4" role="button" tabindex="0" aria-label="Great Cause Greater Impact — flip for details" onclick="this.classList.toggle('is-flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('is-flipped')}">
+        <div class="ecard-inner">
+          <div class="ecard-face ecard-front"><span class="flip-cue">↻</span><span class="ic">🤝</span><b>Great Cause<br>Greater Impact</b></div>
+          <div class="ecard-face ecard-back"><p>Proceeds fund education &amp; mentorship across San Antonio.</p></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
