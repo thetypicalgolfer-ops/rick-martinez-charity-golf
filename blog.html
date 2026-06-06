@@ -112,6 +112,13 @@
     body{font-size:1.08rem}
     .bkick{font-size:clamp(2.1rem,7vw,2.6rem)}
     .cta-btn{width:100%;justify-content:center}
+    /* keep the sticky bar's brand text from overlapping the button */
+    .topbar{padding:8px 12px;gap:10px}
+    .topbar .tb-left{overflow:hidden;min-width:0}
+    .topbar .tb-left .flag{font-size:1.1rem;flex-shrink:0}
+    .topbar .tb-left b{font-size:.95rem}
+    .topbar .tb-left small{font-size:.6rem;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .reg-btn{font-size:.82rem;padding:8px 14px;letter-spacing:.03em;flex-shrink:0}
   }
 
   /* ===== registration modal (ported from home) ===== */
