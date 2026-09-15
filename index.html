@@ -428,7 +428,7 @@
     .reg-btn{font-size:.9rem;padding:8px 14px;letter-spacing:.03em;flex-shrink:0}
     /* hero: zoom in a touch so the banner text reads bigger */
     .hero{overflow:hidden}
-    .hero-img{width:116%;max-width:none;margin-left:-8%}
+    .hero-img{width:100%;max-width:none;margin-left:0}
     /* countdown: label on its own line, four boxes straight across below */
     .cta-band{padding:30px 8px}
     .countdown{flex-wrap:wrap;gap:4px}
@@ -497,7 +497,12 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <img class="hero-img" src="assets/flyer-2026-veterans-wide.jpg" alt="Golfing For Our Veterans Golf Tournament, hosted by Rick Martinez — Thursday October 1, 2026 at Cedar Creek Golf Course, 8250 Vista Colina, San Antonio. Check-in 7:00 AM, shotgun start 8:30 AM. $180 per player, $600 per foursome. Fundraising for our local homeless veterans.">
+  <picture>
+    <!-- phones get the title block on its own: the details card is unreadable at 412px,
+         and the same facts sit in real text a few hundred pixels below. -->
+    <source media="(max-width:640px)" srcset="assets/hero-veterans-2026-mobile.jpg">
+    <img class="hero-img" src="assets/hero-veterans-2026.jpg" alt="Golfing For Our Veterans Golf Tournament, hosted by Rick Martinez — Thursday October 1, 2026 at Cedar Creek Golf Course, 8250 Vista Colina, San Antonio. Check-in 7:00 AM, shotgun start 8:30 AM. $180 per player, $600 per foursome. Fundraising for our local homeless veterans.">
+  </picture>
 </header>
 <div class="stripes"></div>
 
