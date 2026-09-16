@@ -51,6 +51,9 @@
   .fact .v{font-family:var(--head);font-weight:800;line-height:1.04;color:var(--navy);font-size:clamp(1.55rem,3.4vw,2.9rem);text-transform:uppercase;letter-spacing:-.01em}
   .fact .s{font-family:var(--body);font-weight:500;color:var(--muted);font-size:clamp(.95rem,1.5vw,1.12rem);line-height:1.35}
   .fact a{color:inherit;border-bottom:2px solid rgba(224,25,51,.35)}
+  .fact .v a.venue-link{border-bottom:none;cursor:pointer;transition:color .25s var(--ease)}
+  .fact .v a.venue-link:hover,.fact .v a.venue-link:focus-visible{color:var(--red)}
+  .fact .v a.venue-link::after{content:" 📍";font-size:.55em;vertical-align:.28em;opacity:.75}
   .fact a:hover{border-bottom-color:var(--red)}
   @media(max-width:820px){
     .facts-inner{grid-template-columns:1fr;gap:26px}
@@ -536,7 +539,7 @@
     </div>
     <div class="fact">
       <span class="k">📍 Location</span>
-      <span class="v">Cedar Creek<br>Golf Course</span>
+      <span class="v"><a class="venue-link" href="#" onclick="openMap();return false;" aria-label="Open the map to Cedar Creek Golf Course">Cedar Creek<br>Golf Course</a></span>
       <span class="s"><a href="#" onclick="openMap();return false;">8250 Vista Colina, San&nbsp;Antonio, TX 78255</a></span>
     </div>
     <div class="fact">
