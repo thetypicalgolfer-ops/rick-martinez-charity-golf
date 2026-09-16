@@ -61,6 +61,30 @@
     .fact .v{font-size:clamp(1.9rem,7.6vw,2.6rem)}
   }
 
+
+  /* ===== Last year / momentum band =====
+     Deliberately carries NO invented figures. Bart says the last tournament had a huge
+     turnout and that is his event to characterise, but nobody has supplied a headcount
+     or a dollar total, and a charity inventing fundraising numbers is not a risk worth
+     taking. Real numbers slot into .lyr-stats the moment he gives them. */
+  .lastyear{background:linear-gradient(160deg,var(--navy-deep),var(--navy) 55%,var(--navy-mid));color:var(--cream);padding:clamp(52px,8vw,104px) 20px;position:relative;overflow:hidden}
+  .lastyear::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 18%,rgba(242,183,5,.18),transparent 58%)}
+  .ly-in{max-width:var(--maxw);margin:0 auto;position:relative;z-index:2}
+  .ly-kick{font-family:var(--script);font-weight:700;color:var(--gold);font-size:clamp(1.7rem,4.6vw,2.6rem);display:block;margin-bottom:8px}
+  .ly-in h2{font-family:var(--head);font-weight:800;letter-spacing:-.02em;text-transform:uppercase;line-height:.94;font-size:clamp(2.1rem,6.4vw,4.2rem);margin-bottom:22px}
+  .ly-in h2 .hl{color:var(--gold)}
+  .ly-lead{font-size:clamp(1.08rem,2.1vw,1.35rem);color:rgba(251,246,234,.86);max-width:44em;margin-bottom:clamp(28px,4vw,44px)}
+  .ly-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,26px);margin-bottom:clamp(28px,4vw,44px)}
+  .ly-card{background:rgba(255,255,255,.06);border:1px solid rgba(242,183,5,.3);border-radius:16px;padding:clamp(20px,3vw,30px)}
+  .ly-card .ic{font-size:2rem;display:block;margin-bottom:10px}
+  .ly-card b{font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1.05rem,2vw,1.3rem);display:block;margin-bottom:6px;color:#fff}
+  .ly-card p{color:rgba(251,246,234,.72);font-size:clamp(.96rem,1.6vw,1.06rem);line-height:1.5}
+  .ly-cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px}
+  .ly-cta .go{background:var(--red);color:#fff;font-family:var(--head);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:clamp(1rem,1.9vw,1.2rem);border:none;border-radius:999px;padding:18px 40px;cursor:pointer;transition:transform .25s var(--pop),background .25s}
+  .ly-cta .go:hover{background:#fff;color:var(--red);transform:scale(1.05)}
+  .ly-cta .note{font-family:var(--script);font-weight:700;color:var(--gold);font-size:clamp(1.15rem,2.2vw,1.5rem)}
+  @media(max-width:820px){.ly-grid{grid-template-columns:1fr}}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .reveal.in{opacity:1;transform:none}
@@ -598,6 +622,41 @@
       <a class="org reveal" href="blog.html"><div class="ic">🎖️</div><h3>Our Local Homeless Veterans</h3><p>Every dollar raised goes to men and women who served and are now without a home — right here in San Antonio.</p><span class="more">Read our story <span class="ar">→</span></span></a>
       <a class="org reveal" data-d="1" href="blog.html"><div class="ic">🇺🇸</div><h3>Honor · Respect · Support</h3><p>Veterans, active-duty military and law enforcement — thank you for standing with the men and women who served.</p><span class="more">Read our story <span class="ar">→</span></span></a>
       <a class="org reveal" data-d="2" href="blog.html"><div class="ic">⛳</div><h3>A Full Day Of Golf</h3><p>18 holes at Cedar Creek, cart included, 4-person scramble — check-in 7:00 AM, shotgun start 8:30 AM.</p><span class="more">Read our story <span class="ar">→</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- LAST TOURNAMENT / MOMENTUM -->
+<section class="lastyear" id="lastyear">
+  <div class="ly-in">
+    <span class="ly-kick reveal">They showed up last time&hellip;</span>
+    <h2 class="reveal">This one is<br><span class="hl">going to be bigger.</span></h2>
+    <p class="ly-lead reveal">
+      Last tournament the community turned out in force &mdash; a packed morning of foursomes,
+      flags, music and total strangers who finished the day as friends. It worked. So this year
+      we are not repeating it, we are outgrowing it: <strong>a bigger course, a brand-new cause,
+      and a field we intend to fill.</strong>
+    </p>
+    <div class="ly-grid">
+      <div class="ly-card reveal">
+        <span class="ic">📈</span>
+        <b>A Bigger Stage</b>
+        <p>Cedar Creek Golf Course &mdash; a new home for the tournament, with the room to grow the field.</p>
+      </div>
+      <div class="ly-card reveal" data-d="1">
+        <span class="ic">🎖️</span>
+        <b>A Cause Close To Home</b>
+        <p>Every dollar goes to our local homeless veterans. Men and women who served, right here in San Antonio.</p>
+      </div>
+      <div class="ly-card reveal" data-d="2">
+        <span class="ic">⛳</span>
+        <b>The Same Great Day</b>
+        <p>Shotgun start, 4-person scramble, contests all over the course &mdash; and a morning nobody forgets.</p>
+      </div>
+    </div>
+    <div class="ly-cta reveal">
+      <button class="go" onclick="openModal('team')">⛳ Get Your Foursome In</button>
+      <span class="note">Spots go fast &mdash; don&rsquo;t wait on this one.</span>
     </div>
   </div>
 </section>
