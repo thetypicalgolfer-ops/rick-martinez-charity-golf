@@ -38,6 +38,26 @@
   .bebas{font-family:var(--head);font-weight:600;letter-spacing:.04em}
   .marker{font-family:var(--script);font-weight:700}
 
+
+  /* ===== Event facts band — date, place, time, big and immediately under the hero =====
+     These three facts previously existed only inside the flyer artwork and as small
+     navbar text. Baked into an image they cannot be read on a phone, selected, copied
+     or indexed. Now they are real text, first thing after the hero. */
+  .facts{background:linear-gradient(180deg,var(--cream),#f3ecda);border-bottom:6px solid var(--red);padding:clamp(26px,4vw,48px) 20px}
+  .facts-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,44px);text-align:center}
+  .fact{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative}
+  .fact + .fact::before{content:"";position:absolute;left:calc(-1 * clamp(8px,1.5vw,22px));top:12%;height:76%;width:2px;background:rgba(10,28,61,.14)}
+  .fact .k{font-family:var(--head);font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:clamp(.72rem,1.3vw,.86rem);color:var(--red)}
+  .fact .v{font-family:var(--head);font-weight:800;line-height:1.04;color:var(--navy);font-size:clamp(1.55rem,3.4vw,2.9rem);text-transform:uppercase;letter-spacing:-.01em}
+  .fact .s{font-family:var(--body);font-weight:500;color:var(--muted);font-size:clamp(.95rem,1.5vw,1.12rem);line-height:1.35}
+  .fact a{color:inherit;border-bottom:2px solid rgba(224,25,51,.35)}
+  .fact a:hover{border-bottom-color:var(--red)}
+  @media(max-width:820px){
+    .facts-inner{grid-template-columns:1fr;gap:26px}
+    .fact + .fact::before{left:12%;top:-13px;height:2px;width:76%}
+    .fact .v{font-size:clamp(1.9rem,7.6vw,2.6rem)}
+  }
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .reveal.in{opacity:1;transform:none}
@@ -505,6 +525,27 @@
   </picture>
 </header>
 <div class="stripes"></div>
+
+<!-- EVENT FACTS — date · place · time, in real text, right under the hero -->
+<section class="facts" id="facts">
+  <div class="facts-inner">
+    <div class="fact">
+      <span class="k">📅 Date</span>
+      <span class="v">Thursday<br>October 1, 2026</span>
+      <span class="s"><a href="event.ics">Add to your calendar</a></span>
+    </div>
+    <div class="fact">
+      <span class="k">📍 Location</span>
+      <span class="v">Cedar Creek<br>Golf Course</span>
+      <span class="s"><a href="#" onclick="openMap();return false;">8250 Vista Colina, San&nbsp;Antonio, TX 78255</a></span>
+    </div>
+    <div class="fact">
+      <span class="k">⏰ Time</span>
+      <span class="v">8:30 AM<br>Shotgun Start</span>
+      <span class="s">Check-in opens 7:00 AM</span>
+    </div>
+  </div>
+</section>
 
 <!-- COUNTDOWN + CTA BAND -->
 <section class="cta-band">
