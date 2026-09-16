@@ -85,6 +85,17 @@
   .ly-cta .note{font-family:var(--script);font-weight:700;color:var(--gold);font-size:clamp(1.15rem,2.2vw,1.5rem)}
   @media(max-width:820px){.ly-grid{grid-template-columns:1fr}}
 
+
+  /* ===== Mission stats — real, sourced figures only =====
+     Every number is attributed on screen. No figure about this tournament's own past
+     results appears anywhere, because nobody has supplied one. */
+  .mstats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,26px);margin:clamp(30px,4vw,46px) 0 clamp(26px,3.5vw,38px)}
+  .mstat{text-align:center;padding:clamp(18px,2.6vw,26px) 14px;background:rgba(5,15,36,.72);backdrop-filter:blur(3px);border:1px solid rgba(242,183,5,.32);border-radius:16px}
+  .mstat b{display:block;font-family:var(--head);font-weight:800;color:var(--gold);letter-spacing:-.02em;line-height:1;font-size:clamp(2.1rem,5.2vw,3.4rem)}
+  .mstat span{display:block;margin-top:10px;font-size:clamp(.94rem,1.5vw,1.04rem);color:#fff;line-height:1.4;font-weight:600}
+  .mstat cite{display:block;margin-top:8px;font-style:normal;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+  @media(max-width:820px){.mstats{grid-template-columns:1fr}}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
   .reveal.in{opacity:1;transform:none}
@@ -614,10 +625,24 @@
 <section class="mission" id="mission">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kick">help us change lives</span>
-      <h2>One Swing<br>At A Time</h2>
+      <span class="kick">why we play</span>
+        <h2>They Served.<br>Now It&rsquo;s Our Turn.</h2>
       <p>Come for the golf, stay for the impact! Every entry and every sponsorship goes to our local homeless veterans — <strong>honor, respect, support.</strong></p>
     </div>
+      <div class="mstats reveal">
+        <div class="mstat"><b>32,495</b><span>veterans without a home on a single night in America</span><cite>HUD Point-in-Time count, 2025</cite></div>
+        <div class="mstat"><b>1,837</b><span>of them right here in Texas</span><cite>Point-in-Time count, January 2024</cite></div>
+        <div class="mstat"><b>56%</b><span>fall in veteran homelessness since 2009 &mdash; it works when people show up</span><cite>HUD / VA</cite></div>
+      </div>
+
+      <p class="reveal" style="max-width:46em;margin:0 auto clamp(30px,4vw,44px);text-align:center;font-size:clamp(1.02rem,1.8vw,1.2rem);color:rgba(255,255,255,.82);line-height:1.7">
+        That last number is the one worth sitting with. Veteran homelessness has fallen by more than half in fifteen years,
+        and it did not fall on its own &mdash; it fell because communities decided it was unacceptable and paid for the
+        housing, the transport and the case work that got people off the street.
+        <strong style="color:#fff">A round of golf on a Thursday morning in San&nbsp;Antonio is a small part of
+        something that is demonstrably working.</strong>
+      </p>
+
     <div class="orgs">
       <a class="org reveal" href="blog.html"><div class="ic">🎖️</div><h3>Our Local Homeless Veterans</h3><p>Every dollar raised goes to men and women who served and are now without a home — right here in San Antonio.</p><span class="more">Read our story <span class="ar">→</span></span></a>
       <a class="org reveal" data-d="1" href="blog.html"><div class="ic">🇺🇸</div><h3>Honor · Respect · Support</h3><p>Veterans, active-duty military and law enforcement — thank you for standing with the men and women who served.</p><span class="more">Read our story <span class="ar">→</span></span></a>
@@ -824,7 +849,7 @@
     </div>
     <div class="dgrid">
       <a class="dcard cal-card reveal" href="event.ics"><div class="ic">📅</div><div class="k bebas">Date</div><div class="v display">Thu, Oct 1</div><small>2026 · 📲 Tap to add to calendar</small></a>
-      <div class="dcard reveal" data-d="1" role="button" tabindex="0" onclick="openModal('player')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('player')}"><div class="ic">⏰</div><div class="k bebas">Schedule</div><div class="v display">7AM · 8AM</div><small>Registration · Shotgun start</small></div>
+      <div class="dcard reveal" data-d="1" role="button" tabindex="0" onclick="openModal('player')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('player')}"><div class="ic">⏰</div><div class="k bebas">Schedule</div><div class="v display">7AM · 8:30AM</div><small>Check-in · Shotgun start</small></div>
       <div class="dcard map-card reveal" data-d="2" role="button" tabindex="0" onclick="openMap()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openMap()}"><div class="ic">📍</div><div class="k bebas">Location</div><div class="v display">Cedar Creek Golf Course</div><small>8250 Vista Colina · 🗺️ Tap for map &amp; directions</small></div>
       <div class="dcard reveal" data-d="3" role="button" tabindex="0" onclick="openModal('player')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('player')}"><div class="ic">⛳</div><div class="k bebas">Format</div><div class="v display">4-Person Scramble</div><small>18 holes · contests &amp; prizes</small></div>
     </div>
