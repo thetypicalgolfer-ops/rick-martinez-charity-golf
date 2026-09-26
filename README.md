@@ -2,7 +2,7 @@
 
 Landing page for the **2nd Annual Rick Martinez Charity Golf Tournament** — an America 250 celebration benefiting the Learn for Life Center of San Antonio & the Loving Heart Foundation.
 
-- **Date:** Friday, July 10, 2026 · 8:00 AM Shotgun Start
+- **Date:** Thursday, October 8, 2026 · 8:00 AM Shotgun Start
 - **Location:** Golf Club of Texas — 13600 Briggs Ranch Rd, San Antonio, TX 78245
 - **Entry:** $160 / player · $550 / team of 4
 
