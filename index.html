@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🇺🇸 Golfing For Our Veterans Golf Tournament · Thursday, October 8, 2026 · Register Now!</title>
-<meta name="description" content="Thursday, October 8, 2026 · Cedar Creek Golf Course, San Antonio. Golfing For Our Veterans — a golf tournament hosted by Rick Martinez, fundraising for our local homeless veterans. $180/player, $600/foursome. Check-in 7:00 AM, shotgun start 8:30 AM. Register now!">
+<title>🇺🇸 Thank You, San Antonio! · Golfing For Our Veterans Golf Tournament · October 8, 2026</title>
+<meta name="description" content="Golfing For Our Veterans 2026 is in the books. Thank you to every golfer, sponsor and volunteer who came out to Cedar Creek Golf Course in San Antonio on Thursday, October 8, 2026 for our local homeless veterans. Hosted by Rick Martinez.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -532,29 +532,93 @@
     .quote-by .sig{font-size:clamp(3.1rem,7.6vw,3.9rem)}
   }
   #confetti{position:fixed;inset:0;z-index:400;pointer-events:none}
+
+  /* ===== POST-EVENT MODE (2026-10-09) =====
+     The tournament has been played. <body class="post-event"> hides everything marked
+     .pre-only (countdowns, registration, sponsorship payments, the flyer hero) and shows the
+     thank-you recap. For next year: remove the body class and update the dates. */
+  .post-event .pre-only{display:none !important}
+  body:not(.post-event) .post-only{display:none !important}
+  .thanks{position:relative;overflow:hidden;background:radial-gradient(1200px 600px at 50% -10%,var(--navy-mid),var(--navy-deep) 70%);color:#fff;text-align:center;padding:clamp(56px,9vw,120px) 20px clamp(48px,7vw,90px)}
+  .thanks::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 26px);pointer-events:none}
+  .thanks-in{position:relative;max-width:var(--maxw);margin:0 auto}
+  .thanks .t-kick{display:block;font-family:var(--script);font-weight:700;color:var(--gold);font-size:clamp(2rem,6vw,3.4rem);line-height:1;margin-bottom:10px}
+  .thanks h1{font-family:var(--head);font-weight:900;text-transform:uppercase;letter-spacing:-.025em;line-height:.9;font-size:clamp(3rem,11vw,8.4rem);margin:0 auto;max-width:11ch}
+  .thanks h1 .hl{color:var(--red);text-shadow:0 0 40px rgba(224,25,51,.35)}
+  .thanks .t-sub{font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1.25rem,3.4vw,2.2rem);margin-top:clamp(18px,3vw,28px);color:#fff}
+  .thanks .t-sub span{display:inline-block;background:var(--red);padding:.12em .5em;transform:rotate(-1.2deg)}
+  .thanks .t-date{margin-top:16px;color:var(--gold);font-family:var(--head);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:clamp(.78rem,1.6vw,1rem)}
+  .thanks .t-photo{margin:clamp(30px,5vw,54px) auto 0;max-width:1000px;border:6px solid #fff;box-shadow:0 30px 80px rgba(0,0,0,.55);transform:rotate(-.6deg);background:#fff}
+  .thanks .t-photo img{width:100%;height:auto}
+  .thanks .t-photo figcaption{font-family:var(--script);font-weight:700;color:var(--navy);font-size:clamp(1.2rem,2.6vw,1.7rem);padding:10px 14px 6px}
+  .thanks .t-lead{max-width:44em;margin:clamp(28px,4vw,44px) auto 0;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.7;color:rgba(255,255,255,.86)}
+  .thanks .t-lead strong{color:#fff}
+  .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,26px);margin:clamp(30px,5vw,52px) auto 0;max-width:1000px;text-align:left}
+  .t-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-top:5px solid var(--red);padding:22px 22px 24px;border-radius:6px}
+  .t-card:nth-child(2){border-top-color:#fff}
+  .t-card:nth-child(3){border-top-color:var(--sky)}
+  .t-card .ic{font-size:2rem;display:block;margin-bottom:8px}
+  .t-card b{display:block;font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1.05rem,1.9vw,1.25rem);margin-bottom:6px}
+  .t-card p{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.55}
+  .t-next{margin:clamp(34px,5vw,56px) auto 0;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .t-next .go{display:inline-block;background:var(--red);color:#fff;font-family:var(--head);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:clamp(1rem,1.9vw,1.2rem);border-radius:999px;padding:18px 40px;transition:transform .25s var(--pop),background .25s}
+  .t-next .go:hover{transform:translateY(-2px) scale(1.03);background:var(--red-deep)}
+  .t-next small{color:rgba(255,255,255,.65);font-size:.98rem}
+  .t-next small a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+  .tb-thanks{color:var(--gold);font-family:var(--head);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;white-space:nowrap}
+  @media(max-width:820px){.t-grid{grid-template-columns:1fr}.tb-thanks{display:none}}
 </style>
 </head>
-<body>
+<body class="post-event">
 
 <!-- STICKY REGISTER BAR -->
 <div class="topbar" id="topbar">
   <div class="tb-left">
     <span class="flag">🇺🇸</span>
-    <span><b>Golfing For Our Veterans</b><small>Thu · Oct 8, 2026 · Cedar Creek Golf Course</small></span>
+    <span><b>Golfing For Our Veterans</b><small>Played Thu · Oct 8, 2026 · Cedar Creek Golf Course</small></span>
   </div>
   <div class="tb-right">
-    <div class="mini-count" id="miniCount">
+    <span class="tb-thanks post-only">🏆 Thank you for an amazing day!</span>
+    <div class="mini-count pre-only" id="miniCount">
       <div class="mc"><b id="m-d">--</b><span>Days</span></div>
       <div class="mc"><b id="m-h">--</b><span>Hrs</span></div>
       <div class="mc"><b id="m-m">--</b><span>Min</span></div>
       <div class="mc"><b id="m-s">--</b><span>Sec</span></div>
     </div>
-    <button class="reg-btn" onclick="openModal('player')">🏌️ Register Now</button>
+    <button class="reg-btn pre-only" onclick="openModal('player')">🏌️ Register Now</button>
+    <a class="reg-btn post-only" href="#next-year">⛳ Next Year</a>
   </div>
 </div>
 
+<!-- THANK YOU RECAP (post-event) -->
+<section class="thanks post-only" id="thanks" aria-labelledby="thanks-title">
+  <div class="thanks-in">
+    <span class="t-kick">What a day!</span>
+    <h1 id="thanks-title">Thank You, <span class="hl">San Antonio!</span></h1>
+    <div class="t-sub"><span>Golfing For Our Veterans 2026 is in the books</span></div>
+    <div class="t-date">Thursday · October 8, 2026 · Cedar Creek Golf Course</div>
+    <!-- RECAP PHOTO: Bart's photo from the day goes here -->
+    <p class="t-lead">
+      Our golfers, our sponsors, our volunteers and the whole team at Cedar Creek came together and made this
+      tournament a huge success. Every foursome, every sponsor sign, every raffle ticket and every putt went to
+      one place: <strong>our local homeless veterans.</strong> You didn&rsquo;t just play a round of golf. You told
+      the men and women who served that <strong>they are not forgotten, and they are not alone.</strong>
+    </p>
+    <div class="t-grid">
+      <div class="t-card"><span class="ic">⛳</span><b>Thank you, golfers</b><p>You showed up, teed it up and played for something bigger than a scorecard.</p></div>
+      <div class="t-card"><span class="ic">🤝</span><b>Thank you, sponsors</b><p>Your support made the day possible and put real help behind our veterans.</p></div>
+      <div class="t-card"><span class="ic">🎖️</span><b>For our veterans</b><p>Every dollar raised goes to men and women who served and are now without a home, right here in San&nbsp;Antonio.</p></div>
+    </div>
+    <div class="t-next" id="next-year">
+      <a class="go" href="mailto:charitygolfsa@gmail.com?subject=Put%20me%20on%20the%20list%20for%20next%20year&body=Hi!%20Please%20let%20me%20know%20when%20next%20year%27s%20Golfing%20For%20Our%20Veterans%20tournament%20is%20announced.%0A%0AName%3A%0APhone%3A">⛳ Put Me On The List For Next Year</a>
+      <small>Questions or want to help? Call <a href="tel:2103479308">210-347-9308</a> or email <a href="mailto:charitygolfsa@gmail.com">charitygolfsa@gmail.com</a></small>
+    </div>
+  </div>
+</section>
+<div class="stripes post-only"></div>
+
 <!-- HERO -->
-<header class="hero" id="top">
+<header class="hero pre-only" id="top">
   <picture>
     <!-- phones get the title block on its own: the details card is unreadable at 412px,
          and the same facts sit in real text a few hundred pixels below. -->
@@ -562,7 +626,7 @@
     <img class="hero-img" src="assets/hero-veterans-2026.jpg" alt="Golfing For Our Veterans Golf Tournament, hosted by Rick Martinez — Thursday October 8, 2026 at Cedar Creek Golf Course, 8250 Vista Colina, San Antonio. Check-in 7:00 AM, shotgun start 8:30 AM. $180 per player, $600 per foursome. Fundraising for our local homeless veterans.">
   </picture>
 </header>
-<div class="stripes"></div>
+<div class="stripes pre-only"></div>
 
 <!-- EVENT FACTS — date · place · time, in real text, right under the hero -->
 <section class="facts" id="facts">
@@ -570,7 +634,8 @@
     <div class="fact">
       <span class="k">📅 Date</span>
       <span class="v">Thursday<br>October 8, 2026</span>
-      <span class="s"><a href="event.ics">Add to your calendar</a></span>
+      <span class="s pre-only"><a href="event.ics">Add to your calendar</a></span>
+      <span class="s post-only">Played &mdash; thank you!</span>
     </div>
     <div class="fact">
       <span class="k">📍 Location</span>
@@ -596,14 +661,14 @@
       </span>
       <span class="story-cta">Read the Story <span class="ar">→</span></span>
     </a>
-    <div class="countdown" id="countdown">
+    <div class="countdown pre-only" id="countdown">
       <div class="cd-label bebas">⛳ Tee-off countdown to October 8, 2026</div>
       <div class="cd"><span>Days</span><div class="flip-group" id="c-d"></div></div>
       <div class="cd"><span>Hours</span><div class="flip-group" id="c-h"></div></div>
       <div class="cd"><span>Mins</span><div class="flip-group" id="c-m"></div></div>
       <div class="cd"><span>Secs</span><div class="flip-group" id="c-s"></div></div>
     </div>
-    <div class="hero-actions">
+    <div class="hero-actions pre-only">
       <button class="big-cta player" onclick="openModal('player')">
         <span class="small">Sign Up Solo · Per Player</span>
         <span class="price">$180</span>
@@ -652,7 +717,7 @@
 </section>
 
 <!-- LAST TOURNAMENT / MOMENTUM -->
-<section class="lastyear" id="lastyear">
+<section class="lastyear pre-only" id="lastyear">
   <div class="ly-in">
     <span class="ly-kick reveal">They showed up last time&hellip;</span>
     <h2 class="reveal">This one is<br><span class="hl">going to be bigger.</span></h2>
@@ -711,7 +776,7 @@
 <section class="expect" id="expect">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="kick">join us for a day of</span>
+      <span class="kick pre-only">join us for a day of</span><span class="kick post-only">it was a day of</span>
       <h2>Golf, Fun &amp; Impact!</h2>
       <p>A full day of golf, games, raffles and contests — all with one mission: to raise as much money as we possibly can for our veterans. 💛</p>
     </div>
@@ -763,7 +828,7 @@
 </section>
 
 <!-- REGISTER -->
-<section class="register" id="register">
+<section class="register pre-only" id="register">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kick">let's tee up for tomorrow</span>
@@ -793,7 +858,7 @@
 </section>
 
 <!-- SPONSORS -->
-<section class="sponsors" id="sponsors">
+<section class="sponsors pre-only" id="sponsors">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kick">partner with us</span>
@@ -841,7 +906,7 @@
 </section>
 
 <!-- DETAILS -->
-<section class="details" id="details">
+<section class="details pre-only" id="details">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="kick">save the date</span>
@@ -857,7 +922,7 @@
 </section>
 
 <!-- FINALE -->
-<section class="finale">
+<section class="finale pre-only">
   <div class="wrap">
     <div class="script reveal">Together, we can make a difference.</div>
     <p class="reveal" data-d="1">One swing at a time. Reserve your spot today and help us build brighter futures across San Antonio — while celebrating 250 years of freedom and community! 🇺🇸</p>
@@ -878,16 +943,18 @@
       <a href="blog.html">📰 Why We Golf — Read the Story</a>
       <a href="#mission">Our Mission</a>
             <a href="#expect">The Day</a>
-      <a href="#register">Register to Play</a>
-      <a href="#sponsors">Sponsorship</a>
-      <a href="#details">Event Details</a>
+      <a class="pre-only" href="#register">Register to Play</a>
+      <a class="pre-only" href="#sponsors">Sponsorship</a>
+      <a class="pre-only" href="#details">Event Details</a>
+      <a class="post-only" href="#thanks">Thank You, San Antonio</a>
+      <a class="post-only" href="#next-year">Next Year&rsquo;s Tournament</a>
     </div>
     <div>
       <h4>Contact</h4>
       <a href="tel:2103479308">📞 210-347-9308</a>
       <a href="mailto:charitygolfsa@gmail.com">✉️ charitygolfsa@gmail.com</a>
       <a href="https://www.charitygolfsa.org" target="_blank" rel="noopener">🌐 www.charitygolfsa.org</a>
-      <a href="https://www.paypal.com/qrcodes/p2pqrc/GXA4SMZK2ZQ4U" target="_blank" rel="noopener">💳 Pay by PayPal</a>
+      <a class="pre-only" href="https://www.paypal.com/qrcodes/p2pqrc/GXA4SMZK2ZQ4U" target="_blank" rel="noopener">💳 Pay by PayPal</a>
     </div>
   </div>
   <div class="fbot">
@@ -1096,6 +1163,11 @@
       cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);cx.restore();});
     parts=parts.filter(p=>p.life>0&&p.y<ch+40);
     if(parts.length){rafC=requestAnimationFrame(loopC)}else{cx.clearRect(0,0,cw,ch);rafC=null}
+  }
+
+  /* Post-event: celebrate on arrival (skipped for visitors who ask for reduced motion). */
+  if(document.body.classList.contains('post-event')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    addEventListener('load',()=>{setTimeout(burst,350);setTimeout(burst,1100)});
   }
 
 </script>
