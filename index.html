@@ -548,9 +548,17 @@
   .thanks .t-sub{font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1.25rem,3.4vw,2.2rem);margin-top:clamp(18px,3vw,28px);color:#fff}
   .thanks .t-sub span{display:inline-block;background:var(--red);padding:.12em .5em;transform:rotate(-1.2deg)}
   .thanks .t-date{margin-top:16px;color:var(--gold);font-family:var(--head);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:clamp(.78rem,1.6vw,1rem)}
-  .thanks .t-photo{margin:clamp(30px,5vw,54px) auto 0;max-width:1000px;border:6px solid #fff;box-shadow:0 30px 80px rgba(0,0,0,.55);transform:rotate(-.6deg);background:#fff}
-  .thanks .t-photo img{width:100%;height:auto}
-  .thanks .t-photo figcaption{font-family:var(--script);font-weight:700;color:var(--navy);font-size:clamp(1.2rem,2.6vw,1.7rem);padding:10px 14px 6px}
+  .thanks{padding-top:0}
+  .t-hero{position:relative;margin:0 -20px clamp(40px,6vw,80px);border-bottom:6px solid var(--red)}
+  .t-hero img{width:100%;height:auto;aspect-ratio:16/9;max-height:calc(100vh - 64px);object-fit:cover;object-position:center 40%}
+  .t-hero figcaption{position:absolute;left:0;right:0;bottom:0;padding:clamp(60px,9vw,140px) 20px clamp(18px,3vw,34px);background:linear-gradient(180deg,transparent,rgba(5,15,36,.55) 45%,rgba(5,15,36,.92));display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+  .t-hero .th-kick{font-family:var(--script);font-weight:700;color:var(--gold);font-size:clamp(2rem,5.4vw,3.6rem);line-height:1;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .t-hero .th-line{font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.01em;color:#fff;font-size:clamp(1.05rem,2.6vw,1.9rem);line-height:1.15;max-width:34em;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  .t-hero .th-date{margin-top:6px;color:rgba(255,255,255,.75);font-family:var(--head);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:clamp(.7rem,1.4vw,.9rem)}
+  @media(max-width:640px){
+    .t-hero figcaption{position:static;background:var(--navy-deep);padding:18px 16px 4px}
+    .t-hero img{aspect-ratio:4/3;object-position:48% 40%}
+  }
   .thanks .t-lead{max-width:44em;margin:clamp(28px,4vw,44px) auto 0;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.7;color:rgba(255,255,255,.86)}
   .thanks .t-lead strong{color:#fff}
   .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,26px);margin:clamp(30px,5vw,52px) auto 0;max-width:1000px;text-align:left}
@@ -592,15 +600,19 @@
 
 <!-- THANK YOU RECAP (post-event) -->
 <section class="thanks post-only" id="thanks" aria-labelledby="thanks-title">
+  <figure class="t-hero">
+    <img src="assets/recap-2026-golfers.jpg" width="1600" height="900" fetchpriority="high" alt="Five women who helped make the 2026 Golfing For Our Veterans tournament a success, smiling together under the tournament tent at Cedar Creek Golf Course, October 8, 2026">
+    <figcaption>
+      <span class="th-kick">A special thank-you</span>
+      <span class="th-line">to these amazing ladies for everything they put into this tournament</span>
+      <span class="th-date">Cedar Creek Golf Course &middot; October 8, 2026</span>
+    </figcaption>
+  </figure>
   <div class="thanks-in">
     <span class="t-kick">What a day!</span>
     <h1 id="thanks-title">Thank You, <span class="hl">San Antonio!</span></h1>
     <div class="t-sub"><span>Golfing For Our Veterans 2026 is in the books</span></div>
     <div class="t-date">Thursday · October 8, 2026 · Cedar Creek Golf Course</div>
-    <figure class="t-photo">
-      <img src="assets/recap-2026-golfers.jpg" width="1600" height="900" alt="Five golfers smiling together under the tournament tent at Cedar Creek Golf Course, October 8, 2026">
-      <figcaption>Golfing For Our Veterans &middot; Cedar Creek &middot; October 8, 2026</figcaption>
-    </figure>
     <p class="t-lead">
       Our golfers, our sponsors, our volunteers and the whole team at Cedar Creek came together and made this
       tournament a huge success. Every foursome, every sponsor sign, every raffle ticket and every putt went to
