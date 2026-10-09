@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.charitygolfsa.org/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://www.charitygolfsa.org/assets/recap-2026-golfers.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.charitygolfsa.org/san-antonio-charity-golf-tournament-2026-recap.html</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://www.charitygolfsa.org/assets/recap-2026-golfers.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.charitygolfsa.org/blog.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
