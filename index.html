@@ -584,6 +584,46 @@
   .t-next small a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
   .tb-thanks{color:var(--gold);font-family:var(--head);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;white-space:nowrap}
   @media(max-width:820px){.t-grid{grid-template-columns:1fr}.tb-thanks{display:none}}
+
+  /* ===== DONATIONS (2026-10-09) — Bart: "make it prominently known… at every step of the way."
+     Every button opens one donate popup; payment goes through the tournament's existing PayPal
+     link (the Cash App account is unconfirmed, so it is not offered). No tax-deductible claim. */
+  .give-band{max-width:1100px;margin:clamp(30px,5vw,54px) auto;display:grid;grid-template-columns:1.3fr auto auto;align-items:center;gap:clamp(14px,2.4vw,28px);padding:clamp(20px,3vw,30px) clamp(20px,3.4vw,36px);border-radius:16px;background:linear-gradient(120deg,var(--red-deep),var(--red) 55%,#ff3b52);color:#fff;box-shadow:0 24px 60px -18px rgba(224,25,51,.6);text-align:left;position:relative;overflow:hidden}
+  .give-band::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.06) 0 2px,transparent 2px 22px);pointer-events:none}
+  .give-band > *{position:relative;z-index:1}
+  .give-band .gb-text b{display:block;font-family:var(--head);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:1.02;font-size:clamp(1.35rem,2.8vw,2rem)}
+  .give-band .gb-text span{display:block;margin-top:6px;font-size:clamp(.95rem,1.5vw,1.05rem);color:rgba(255,255,255,.9);line-height:1.45}
+  .gb-amts{display:flex;flex-wrap:wrap;gap:8px}
+  .gb-amts button{background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:999px;padding:10px 16px;font-family:var(--head);font-weight:800;font-size:1.05rem;cursor:pointer;transition:background .2s,color .2s,transform .2s var(--pop)}
+  .gb-amts button:hover{background:#fff;color:var(--red);transform:translateY(-2px)}
+  .gb-go{background:var(--gold);color:var(--navy-deep);border:0;border-radius:999px;padding:18px 30px;font-family:var(--head);font-weight:900;letter-spacing:.05em;text-transform:uppercase;font-size:clamp(1.05rem,1.9vw,1.25rem);cursor:pointer;white-space:nowrap;box-shadow:0 10px 26px rgba(0,0,0,.25);transition:transform .25s var(--pop),background .25s;animation:gbPulse 2.4s ease-in-out infinite}
+  .gb-go:hover{transform:scale(1.05);background:#ffd23a}
+  @keyframes gbPulse{0%,100%{box-shadow:0 10px 26px rgba(0,0,0,.25),0 0 0 0 rgba(242,183,5,.55)}50%{box-shadow:0 10px 26px rgba(0,0,0,.25),0 0 0 12px rgba(242,183,5,0)}}
+  @media(prefers-reduced-motion:reduce){.gb-go{animation:none}}
+  @media(max-width:900px){.give-band{grid-template-columns:1fr;text-align:center}.gb-amts{justify-content:center}.gb-go{width:100%}}
+  .quote-give{margin-top:clamp(26px,4vw,40px);text-align:center;position:relative;z-index:2}
+  .quote-give button{background:var(--red);color:#fff;border:0;border-radius:999px;padding:18px 40px;font-family:var(--head);font-weight:900;letter-spacing:.05em;text-transform:uppercase;font-size:clamp(1.05rem,2vw,1.3rem);cursor:pointer;box-shadow:0 14px 40px -10px rgba(224,25,51,.7);transition:transform .25s var(--pop)}
+  .quote-give button:hover{transform:scale(1.05)}
+  .give-final{background:radial-gradient(900px 500px at 50% 0%,var(--red),var(--red-deep) 60%,#7a0716);color:#fff;text-align:center;padding:clamp(60px,9vw,110px) 20px;border-top:6px solid var(--gold)}
+  .give-final .gf-kick{display:block;font-family:var(--script);font-weight:700;color:var(--gold);font-size:clamp(1.9rem,5vw,3rem);line-height:1}
+  .give-final h2{font-family:var(--head);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.92;font-size:clamp(2.6rem,8.5vw,6rem);margin:10px auto 0;max-width:12ch}
+  .give-final p{max-width:40em;margin:18px auto 0;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.6;color:rgba(255,255,255,.92)}
+  .gf-amts{display:grid;grid-template-columns:repeat(3,minmax(0,170px));justify-content:center;gap:12px;margin:clamp(26px,4vw,40px) auto 0}
+  .gf-amts button{background:#fff;color:var(--red-deep);border:0;border-radius:14px;padding:18px 10px;font-family:var(--head);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.2rem);cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.25);transition:transform .2s var(--pop),background .2s,color .2s}
+  .gf-amts button:hover{transform:translateY(-3px);background:var(--gold);color:var(--navy-deep)}
+  .gf-amts button.other{font-size:clamp(1.1rem,2.4vw,1.5rem);text-transform:uppercase}
+  .give-final .gf-go{display:inline-block;margin-top:24px;background:var(--gold);color:var(--navy-deep);border:0;border-radius:999px;padding:22px 48px;font-family:var(--head);font-weight:900;letter-spacing:.05em;text-transform:uppercase;font-size:clamp(1.2rem,2.4vw,1.6rem);cursor:pointer;animation:gbPulse 2.4s ease-in-out infinite}
+  .give-final small{display:block;margin-top:18px;color:rgba(255,255,255,.85);font-size:1rem}
+  .give-final small a{color:#fff;border-bottom:1px solid rgba(255,255,255,.5)}
+  @media(max-width:520px){.gf-amts{grid-template-columns:repeat(2,1fr)}}
+  .tb-donate{background:var(--gold) !important;color:var(--navy-deep) !important}
+  .t-next .go.give{background:var(--gold);color:var(--navy-deep)}
+  .t-next .go.give:hover{background:#ffd23a}
+  .t-next .btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+  .donate-modal .d-amts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+  .donate-modal .d-amts button{background:#fff;border:2px solid rgba(10,28,61,.18);border-radius:12px;padding:12px 6px;font-family:var(--head);font-weight:800;font-size:1.25rem;color:var(--navy);cursor:pointer}
+  .donate-modal .d-amts button.on{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+  .donate-modal .d-how{font-size:.92rem;color:#41506a;text-align:center;margin:10px 0 16px}
 </style>
 </head>
 <body class="post-event">
@@ -603,7 +643,7 @@
       <div class="mc"><b id="m-s">--</b><span>Sec</span></div>
     </div>
     <button class="reg-btn pre-only" onclick="openModal('player')">🏌️ Register Now</button>
-    <a class="reg-btn post-only" href="#next-year">⛳ Next Year</a>
+    <button class="reg-btn tb-donate post-only" onclick="openDonate(100)">❤️ Donate</button>
   </div>
 </div>
 
@@ -645,7 +685,10 @@
       </div>
     </div>
     <div class="t-next" id="next-year">
+      <div class="btns">
+      <button type="button" class="go give" onclick="openDonate(100)">❤️ Donate To Our Veterans</button>
       <a class="go" href="mailto:charitygolfsa@gmail.com?subject=Put%20me%20on%20the%20list%20for%20next%20year&body=Hi!%20Please%20let%20me%20know%20when%20next%20year%27s%20Golfing%20For%20Our%20Veterans%20tournament%20is%20announced.%0A%0AName%3A%0APhone%3A">⛳ Put Me On The List For Next Year</a>
+      </div>
       <small>Questions or want to help? Call <a href="tel:2103479308">210-347-9308</a> or email <a href="mailto:charitygolfsa@gmail.com">charitygolfsa@gmail.com</a></small>
     </div>
   </div>
@@ -729,6 +772,13 @@
         <h2>They Served.<br>Now It&rsquo;s Our Turn.</h2>
       <p>Come for the golf, stay for the impact! Every entry and every sponsorship goes to our local homeless veterans — <strong>honor, respect, support.</strong></p>
     </div>
+    <div class="give-band">
+      <div class="gb-text"><b>They served. Now it&rsquo;s our turn to give.</b><span>Every dollar goes to our local homeless veterans, right here in San&nbsp;Antonio.</span></div>
+      <div class="gb-amts" role="group" aria-label="Choose a donation amount">
+        <button type="button" onclick="openDonate(25)">$25</button><button type="button" onclick="openDonate(50)">$50</button><button type="button" onclick="openDonate(100)">$100</button><button type="button" onclick="openDonate(250)">$250</button><button type="button" onclick="openDonate(0)">Other</button>
+      </div>
+      <button type="button" class="gb-go" onclick="openDonate(100)">❤️ Donate Now</button>
+    </div>
       <div class="mstats reveal">
         <div class="mstat"><b>32,495</b><span>veterans without a home on a single night in America</span><cite>HUD Point-in-Time count, 2025</cite></div>
         <div class="mstat"><b>1,837</b><span>of them right here in Texas</span><cite>Point-in-Time count, January 2024</cite></div>
@@ -743,6 +793,14 @@
         something that is demonstrably working.</strong>
       </p>
 
+
+    <div class="give-band">
+      <div class="gb-text"><b>It works when people show up. Show up today.</b><span>Help keep that number falling in San&nbsp;Antonio. Give what you can, right now.</span></div>
+      <div class="gb-amts" role="group" aria-label="Choose a donation amount">
+        <button type="button" onclick="openDonate(25)">$25</button><button type="button" onclick="openDonate(50)">$50</button><button type="button" onclick="openDonate(100)">$100</button><button type="button" onclick="openDonate(250)">$250</button><button type="button" onclick="openDonate(0)">Other</button>
+      </div>
+      <button type="button" class="gb-go" onclick="openDonate(100)">❤️ Donate Now</button>
+    </div>
     <div class="orgs">
       <a class="org reveal" href="blog.html"><div class="ic">🎖️</div><h3>Our Local Homeless Veterans</h3><p>Every dollar raised goes to men and women who served and are now without a home — right here in San Antonio.</p><span class="more">Read our story <span class="ar">→</span></span></a>
       <a class="org reveal" data-d="1" href="blog.html"><div class="ic">🇺🇸</div><h3>Honor · Respect · Support</h3><p>Veterans, active-duty military and law enforcement — thank you for standing with the men and women who served.</p><span class="more">Read our story <span class="ar">→</span></span></a>
@@ -804,6 +862,7 @@
       <span class="sig">Rick Martinez</span>
       <span class="role">Host &middot; Golfing For Our Veterans Golf Tournament</span>
     </div>
+    <div class="quote-give"><button type="button" onclick="openDonate(100)">❤️ Stand With Rick &mdash; Donate Today</button></div>
   </div>
 </section>
 
@@ -858,6 +917,14 @@
           <div class="ecard-face ecard-back"><p>Proceeds go to our local homeless veterans across San Antonio.</p></div>
         </div>
       </div>
+    </div>
+
+    <div class="give-band">
+      <div class="gb-text"><b>The golf is over. The mission isn&rsquo;t.</b><span>Our veterans need help today, not next year. Your gift goes straight to the cause.</span></div>
+      <div class="gb-amts" role="group" aria-label="Choose a donation amount">
+        <button type="button" onclick="openDonate(25)">$25</button><button type="button" onclick="openDonate(50)">$50</button><button type="button" onclick="openDonate(100)">$100</button><button type="button" onclick="openDonate(250)">$250</button><button type="button" onclick="openDonate(0)">Other</button>
+      </div>
+      <button type="button" class="gb-go" onclick="openDonate(100)">❤️ Donate Now</button>
     </div>
   </div>
 </section>
@@ -965,6 +1032,24 @@
   </div>
 </section>
 
+<!-- GIVE (final ask) -->
+<section class="give-final" id="donate" aria-labelledby="donate-title">
+  <span class="gf-kick">Please, give today</span>
+  <h2 id="donate-title">Our veterans can&rsquo;t wait.</h2>
+  <p>Tonight, veterans who served this country are without a home a few miles from Cedar Creek. You can help right now.
+     <strong>Every dollar goes to our local homeless veterans in San&nbsp;Antonio.</strong></p>
+  <div class="gf-amts" role="group" aria-label="Choose a donation amount">
+    <button type="button" onclick="openDonate(25)">$25</button>
+    <button type="button" onclick="openDonate(50)">$50</button>
+    <button type="button" onclick="openDonate(100)">$100</button>
+    <button type="button" onclick="openDonate(250)">$250</button>
+    <button type="button" onclick="openDonate(500)">$500</button>
+    <button type="button" class="other" onclick="openDonate(0)">Other</button>
+  </div>
+  <button type="button" class="gf-go" onclick="openDonate(100)">❤️ Donate Now</button>
+  <small>Prefer to give by check or in person? Call <a href="tel:2103479308">210-347-9308</a> or email <a href="mailto:charitygolfsa@gmail.com?subject=I%27d%20like%20to%20donate">charitygolfsa@gmail.com</a></small>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="fgrid">
@@ -981,6 +1066,7 @@
       <a class="pre-only" href="#register">Register to Play</a>
       <a class="pre-only" href="#sponsors">Sponsorship</a>
       <a class="pre-only" href="#details">Event Details</a>
+      <a href="#donate">❤️ Donate to Our Veterans</a>
       <a class="post-only" href="#thanks">Thank You, San Antonio</a>
       <a class="post-only" href="#next-year">Next Year&rsquo;s Tournament</a>
     </div>
@@ -990,6 +1076,7 @@
       <a href="mailto:charitygolfsa@gmail.com">✉️ charitygolfsa@gmail.com</a>
       <a href="https://www.charitygolfsa.org" target="_blank" rel="noopener">🌐 www.charitygolfsa.org</a>
       <a class="pre-only" href="https://www.paypal.com/qrcodes/p2pqrc/GXA4SMZK2ZQ4U" target="_blank" rel="noopener">💳 Pay by PayPal</a>
+      <a class="post-only" href="#" onclick="openDonate(100);return false;">❤️ Donate by PayPal</a>
     </div>
   </div>
   <div class="fbot">
@@ -1011,6 +1098,24 @@
     <div class="mrow"><span class="ic">✉️</span><div>Email your registration (pre-filled)<br><a id="mEmail" href="mailto:charitygolfsa@gmail.com">charitygolfsa@gmail.com</a></div></div>
     <div class="mrow"><span class="ic">🌐</span><div>Register online<br><a href="https://www.charitygolfsa.org" target="_blank" rel="noopener">www.charitygolfsa.org</a></div></div>
     <div class="note">Checks payable to: The our local homeless veterans. Thursday, October 8, 2026 · Cedar Creek Golf Course, San Antonio · Registration 7:00 AM, shotgun start 8:00 AM.</div>
+  </div>
+</div>
+
+<!-- DONATE MODAL -->
+<div class="ov" id="donateOv">
+  <div class="modal donate-modal" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <button class="x" onclick="closeDonate()" aria-label="Close">×</button>
+    <h3 id="dTitle">Donate to Our Veterans</h3>
+    <div class="mtag">Every dollar helps 🇺🇸</div>
+    <p class="mintro">Every dollar goes to our local homeless veterans, right here in San&nbsp;Antonio. Choose an amount:</p>
+    <div class="d-amts" id="dAmts">
+      <button type="button" data-a="25">$25</button><button type="button" data-a="50">$50</button><button type="button" data-a="100">$100</button>
+      <button type="button" data-a="250">$250</button><button type="button" data-a="500">$500</button><button type="button" data-a="1000">$1,000</button>
+    </div>
+    <a class="mbtn" id="dPay" href="https://www.paypal.com/qrcodes/p2pqrc/GXA4SMZK2ZQ4U" target="_blank" rel="noopener">💛 <span id="dPayTxt">Donate $100 with PayPal</span></a>
+    <p class="d-how" id="dHow">PayPal opens in a new tab. Enter <b>$100</b> and tap Send.</p>
+    <div class="mrow"><span class="ic">✍️</span><div>Prefer to give by check or in person?<br><a href="tel:2103479308"><b>Call 210-347-9308</b></a></div></div>
+    <div class="mrow"><span class="ic">✉️</span><div>Questions about giving<br><a href="mailto:charitygolfsa@gmail.com?subject=I%27d%20like%20to%20donate">charitygolfsa@gmail.com</a></div></div>
   </div>
 </div>
 
@@ -1139,6 +1244,21 @@
   function closeModal(){modal.classList.remove('show');document.body.style.overflow=''}
   modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+  /* ===== Donate popup: one popup for every Donate button on the page ===== */
+  const donateOv=document.getElementById('donateOv');
+  function setDonate(a){
+    document.querySelectorAll('#dAmts button').forEach(b=>b.classList.toggle('on',Number(b.dataset.a)===a));
+    const amt=a?'$'+a.toLocaleString():'';
+    document.getElementById('dPayTxt').textContent=a?'Donate '+amt+' with PayPal':'Donate with PayPal';
+    document.getElementById('dHow').innerHTML=a?'PayPal opens in a new tab. Enter <b>'+amt+'</b> and tap Send.':'PayPal opens in a new tab. Enter any amount and tap Send.';
+  }
+  function openDonate(a){setDonate(a||0);donateOv.classList.add('show');document.body.style.overflow='hidden'}
+  function closeDonate(){donateOv.classList.remove('show');document.body.style.overflow=''}
+  document.querySelectorAll('#dAmts button').forEach(b=>b.addEventListener('click',()=>setDonate(Number(b.dataset.a))));
+  document.getElementById('dPay').addEventListener('click',()=>{if(typeof burst==='function')burst()});
+  donateOv.addEventListener('click',e=>{if(e.target===donateOv)closeDonate()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDonate()});
 
   /* ===== Location map popup ===== */
   const DEST='Cedar Creek Golf Course, 8250 Vista Colina, San Antonio, TX 78255';
