@@ -273,13 +273,15 @@
 
   /* mission band */
   .mission{position:relative;overflow:hidden;color:#fff;background:#0a1c3d}
-  .mission::after{content:"";position:absolute;inset:0;z-index:0;background:url('assets/charity-bg.png') center/cover no-repeat;background-attachment:fixed}
-  .mission::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,18,42,.72) 0%,rgba(8,18,42,.55) 45%,rgba(8,18,42,.8) 100%)}
+  /* The sunset-and-flag photo sits sharp behind the heading only, then fades into navy. It used
+     to cover the whole (now very tall) section, which blew it up into a blurry brown smear. */
+  .mission{background:var(--navy-deep)}
+  .mission::after{content:"";position:absolute;left:0;right:0;top:0;height:clamp(560px,62vw,920px);z-index:0;background:url('assets/charity-bg.png') center 38%/cover no-repeat}
+  .mission::before{content:"";position:absolute;left:0;right:0;top:0;height:clamp(560px,62vw,920px);z-index:1;background:linear-gradient(180deg,rgba(5,15,36,.55) 0%,rgba(5,15,36,.25) 30%,rgba(5,15,36,.45) 62%,var(--navy-deep) 100%)}
   .mission .wrap{position:relative;z-index:2}
   .mission .section-head h2{color:#fff;text-shadow:0 4px 16px rgba(0,0,0,.45)}
   .mission .section-head p{color:#eef2fb}
   .mission .section-head .kick{color:var(--gold)}
-  @media(max-width:820px){.mission::after{background-attachment:scroll}}
   .orgs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;z-index:2}
   @media(max-width:820px){.orgs{grid-template-columns:1fr}}
   .org{display:block;cursor:pointer;background:#fff;border-radius:14px;padding:30px 26px;text-align:center;border:2px solid transparent;box-shadow:0 16px 40px rgba(10,28,61,.08);transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
@@ -634,8 +636,6 @@
   .tb-rm{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-family:var(--head);font-weight:700}
   .tb-rm img{height:46px;width:auto}
   @media(max-width:1000px){.tb-rm{display:none}}
-  .gf-rm{display:inline-flex;align-items:center;gap:14px;margin-bottom:22px;padding:10px 20px;background:#000;border-radius:999px;color:#fff;font-family:var(--head);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:clamp(.78rem,1.5vw,.92rem)}
-  .gf-rm img{height:clamp(38px,5vw,52px);width:auto}
   .f-rm{display:inline-flex;flex-direction:column;gap:6px;margin-top:20px}
   .f-rm span{font-family:var(--head);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;color:var(--gold)}
   .f-rm img{height:70px;width:auto}
@@ -1069,7 +1069,6 @@
 
 <!-- GIVE (final ask) -->
 <section class="give-final" id="donate" aria-labelledby="donate-title">
-  <a class="gf-rm" href="https://rockstarrmedia.com" target="_blank" rel="noopener">Join <img src="assets/rockstarr-media-logo-white.png" alt="Rockstarr Media" width="600" height="401" loading="lazy"> in giving</a>
   <span class="gf-kick">Please, give today</span>
   <h2 id="donate-title">Our veterans can&rsquo;t wait.</h2>
   <p>Tonight, veterans who served this country are without a home a few miles from Cedar Creek. You can help right now.
