@@ -443,6 +443,12 @@
   .fbot{max-width:var(--maxw);margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center}
   .fbot .tg{font-family:var(--script);font-weight:700;font-size:1.5rem;color:var(--gold)}
   .fbot small{color:#8893a8;font-size:.86rem}
+  /* Major donor credit at the very bottom: text only (Bart rejected the logo image in the footer). */
+  .f-donor{display:block;max-width:var(--maxw);margin:26px auto 0;padding:22px 20px 6px;border-top:2px solid var(--gold);text-align:center}
+  .f-donor .fd-k{display:block;font-family:var(--head);font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-size:clamp(.7rem,1.4vw,.82rem)}
+  .f-donor .fd-n{display:block;margin-top:6px;font-family:var(--head);font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;transition:color .25s}
+  .f-donor:hover .fd-n{color:var(--gold)}
+  .f-donor .fd-t{display:block;margin-top:8px;color:rgba(255,255,255,.75);font-size:clamp(.92rem,1.6vw,1.02rem)}
 
   /* MODAL */
   .ov{position:fixed;inset:0;background:rgba(5,15,36,.88);backdrop-filter:blur(5px);z-index:300;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;transition:opacity .3s}
@@ -1111,6 +1117,11 @@
     <div class="tg">Let's Tee Up for Tomorrow!</div>
     <small>© 2026 Rick Martinez Charity Golf Tournament · All rights reserved.</small>
   </div>
+  <a class="f-donor" href="https://rockstarrmedia.com" target="_blank" rel="noopener">
+    <span class="fd-k">Made possible by our major donor</span>
+    <span class="fd-n">Rockstarr Media</span>
+    <span class="fd-t">Without them, this tournament would not have been possible. Thank you.</span>
+  </a>
 </footer>
 
 <!-- MODAL -->
