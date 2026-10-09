@@ -444,10 +444,14 @@
   .fbot .tg{font-family:var(--script);font-weight:700;font-size:1.5rem;color:var(--gold)}
   .fbot small{color:#8893a8;font-size:.86rem}
   /* Major donor credit at the very bottom: text only (Bart rejected the logo image in the footer). */
-  .f-donor{display:block;max-width:var(--maxw);margin:26px auto 0;padding:22px 20px 6px;border-top:2px solid var(--gold);text-align:center}
+  /* The name "Rockstarr Media" is always pure white, never gold or any other color (Bart, 2026-10-09). */
+  .rm-name{color:#fff !important}
+  .f-donor{display:flex;align-items:center;justify-content:center;gap:clamp(18px,3vw,32px);max-width:var(--maxw);margin:26px auto 0;padding:22px 20px 6px;border-top:2px solid var(--gold);text-align:left}
+  .f-donor img{height:clamp(84px,9vw,110px);width:auto;flex-shrink:0}
+  .f-donor .fd-txt{display:block;padding-left:clamp(18px,3vw,32px);border-left:1px solid rgba(255,255,255,.2)}
+  @media(max-width:640px){.f-donor{flex-direction:column;text-align:center;gap:12px}.f-donor .fd-txt{padding-left:0;border-left:0}}
   .f-donor .fd-k{display:block;font-family:var(--head);font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-size:clamp(.7rem,1.4vw,.82rem)}
   .f-donor .fd-n{display:block;margin-top:6px;font-family:var(--head);font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05;transition:color .25s}
-  .f-donor:hover .fd-n{color:var(--gold)}
   .f-donor .fd-t{display:block;margin-top:8px;color:rgba(255,255,255,.75);font-size:clamp(.92rem,1.6vw,1.02rem)}
 
   /* MODAL */
@@ -683,7 +687,7 @@
   <div class="rm-band">
     <a href="https://rockstarrmedia.com" target="_blank" rel="noopener" aria-label="Rockstarr Media, major donor">
       <img src="assets/rockstarr-media-logo-white.png" alt="Rockstarr Media" width="600" height="401">
-      <span><span class="rb-k">Major donor</span><span class="rb-t">Proudly supported by Rockstarr Media</span><span class="rb-s">Thank you for standing with our local homeless veterans.</span></span>
+      <span><span class="rb-k">Major donor</span><span class="rb-t">Proudly supported by <span class="rm-name">Rockstarr Media</span></span><span class="rb-s">Thank you for standing with our local homeless veterans.</span></span>
     </a>
   </div>
   <div class="thanks-in">
@@ -703,7 +707,7 @@
     </p>
     <div class="t-grid">
       <div class="t-card"><span class="ic">⛳</span><b>Thank you, golfers</b><p>You showed up, teed it up and played for something bigger than a scorecard.</p></div>
-      <div class="t-card"><span class="ic">🤝</span><b>Thank you, sponsors</b><p>Propelledit and Rockstarr Media made the day possible and put real help behind our veterans.</p></div>
+      <div class="t-card"><span class="ic">🤝</span><b>Thank you, sponsors</b><p>Propelledit and <span class="rm-name">Rockstarr Media</span> made the day possible and put real help behind our veterans.</p></div>
       <div class="t-card"><span class="ic">🎖️</span><b>For our veterans</b><p>Every dollar raised goes to men and women who served and are now without a home, right here in San&nbsp;Antonio.</p></div>
     </div>
     <div class="t-sponsors">
@@ -711,7 +715,7 @@
       <a class="ts-feature" href="https://rockstarrmedia.com" target="_blank" rel="noopener">
         <span class="tf-badge">Major Donor</span>
         <img src="assets/rockstarr-media-logo-white.png" alt="Rockstarr Media" width="600" height="401" loading="lazy">
-        <p>Rockstarr Media gave big to Golfing For Our Veterans. Thank you for putting real help behind the men and women who served.</p>
+        <p><span class="rm-name">Rockstarr Media</span> gave big to Golfing For Our Veterans. Thank you for putting real help behind the men and women who served.</p>
       </a>
       <span class="ts-also">And thank you to</span>
       <div class="ts-row">
@@ -954,7 +958,7 @@
     </div>
 
     <div class="give-band">
-      <div class="gb-text"><b>Rockstarr Media gave big. Now it&rsquo;s your turn.</b><span>The golf is over, but the mission isn&rsquo;t. Our veterans need help today, not next year.</span></div>
+      <div class="gb-text"><b><span class="rm-name">Rockstarr Media</span> gave big. Now it&rsquo;s your turn.</b><span>The golf is over, but the mission isn&rsquo;t. Our veterans need help today, not next year.</span></div>
       <div class="gb-amts" role="group" aria-label="Choose a donation amount">
         <button type="button" onclick="openDonate(25)">$25</button><button type="button" onclick="openDonate(50)">$50</button><button type="button" onclick="openDonate(100)">$100</button><button type="button" onclick="openDonate(250)">$250</button><button type="button" onclick="openDonate(0)">Other</button>
       </div>
@@ -1118,9 +1122,12 @@
     <small>© 2026 Rick Martinez Charity Golf Tournament · All rights reserved.</small>
   </div>
   <a class="f-donor" href="https://rockstarrmedia.com" target="_blank" rel="noopener">
-    <span class="fd-k">Made possible by our major donor</span>
-    <span class="fd-n">Rockstarr Media</span>
-    <span class="fd-t">Without them, this tournament would not have been possible. Thank you.</span>
+    <img src="assets/rockstarr-media-logo-white.png" alt="Rockstarr Media" width="600" height="401" loading="lazy">
+    <span class="fd-txt">
+      <span class="fd-k">Made possible by our major donor</span>
+      <span class="fd-n rm-name">Rockstarr Media</span>
+      <span class="fd-t">Without them, this tournament would not have been possible. Thank you.</span>
+    </span>
   </a>
 </footer>
 
